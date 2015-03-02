@@ -36,6 +36,13 @@ public abstract class Pedal extends DraggableImageThing{
 
     private double knob_4_x = .5;
     private double knob_4_y = .2;
+    
+    private String fsType = "1";
+
+    private int fsCount = 1;
+    
+    private double fs_0_x = .5;
+    private double fs_0_y = .7;
 
     public Pedal(){
     	this.PedalType = "MXR";
@@ -107,6 +114,20 @@ public abstract class Pedal extends DraggableImageThing{
 	}
 	public int getKnobCount() {
 		return knobCount;
+	}
+	
+	public void setFsType(String t) {
+		fsType = t;
+	}
+	public String getFsType() {
+		return fsType;
+	}
+
+	public void setFsCount(int c) {
+		fsCount = c;
+	}
+	public int getFsCount() {
+		return fsCount;
 	}
 
 	public static double getKnob_x(int thisPedal, int i) {
@@ -211,6 +232,37 @@ public abstract class Pedal extends DraggableImageThing{
 		knob_4_y = (v);
 	}
 
+	public static double getFs_x(int thisPedal, int i) {
+		switch (i) {
+		case 1:
+            return Pedal.pedalList.get(thisPedal).fs_0_x;
+        default:
+        	return 0;
+		}
+	}
+
+	public static double getFs_y(int thisPedal, int i) {
+		switch (i) {
+		case 1:
+            return Pedal.pedalList.get(thisPedal).fs_0_y;
+        default:
+        	return 0;
+		}
+	}
+
+	public double getFs_0_x() {
+		return fs_0_x;
+	}
+	public double getFs_0_y() {
+		return fs_0_y;
+	}
+
+	public void setFs_0_x(double v) {
+		fs_0_x = (v);
+	}
+	public void setFs_0_y(double v) {
+		fs_0_y = (v);
+	}
 	public String toString() {
 		return "pedal type is: " + PedalType;
 	}
