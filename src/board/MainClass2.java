@@ -208,8 +208,9 @@ public class MainClass2 extends JFrame{
         }
 		surface.add(spawn);
 
-    	int elements = 1 + spawn.getKnobCount() + 0;		// DLATER: add foot switch count later
-        BufferedImage[] input = new BufferedImage[elements]; 	// create array for the layers of pngs. 
+    	int elements = 1 + spawn.getKnobCount() + spawn.getFsCount();		// DLATER: add foot switch count later
+        BufferedImage[] input = new BufferedImage[elements+1]; 	// create array for the layers of pngs. 
+        System.out.println("input length: " + input.length);
         														// total elements is base + knobCount + fsCount
 
     	//////////////////////////////////////////////////////////////
@@ -225,6 +226,19 @@ public class MainClass2 extends JFrame{
             try {
                 File f2 = new File( "images/knobs/knob_" + spawn.getKnobType() + ".png" );
                 //System.out.println(f2);
+                System.out.println("i is: " + i + " ok loop");
+                input[i] = ImageIO.read( f2 );
+            }
+            catch ( IOException x ) {
+                x.printStackTrace();
+            }
+            
+
+        }
+        for ( int i = spawn.getKnobCount()+1; i <= spawn.getKnobCount()+1+spawn.getFsCount(); i++ ) { // loop to get fs images
+            try {
+                File f2 = new File( "images/fs/fs_" + spawn.getFsType() + ".png" );
+                System.out.println("i is: " + i);
                 input[i] = ImageIO.read( f2 );
             }
             catch ( IOException x ) {
@@ -241,8 +255,9 @@ public class MainClass2 extends JFrame{
         Graphics g = output.getGraphics();
         g.drawImage((input[0]), 0, 0, null);
         for ( int i = 1; i < input.length; i++ ) {			// draws the rest of the elements
-        	if (i <= (1 + spawn.getKnobCount())){			// checks if element is a knob
+        	if (i <= (spawn.getKnobCount())){			// checks if element is a knob
         			
+                	System.out.println("knob printing image, i is: " + i);
         			double someval_x = Pedal.getKnob_x(Pedal.pedalList.size()-1, i);	// get knob positions for latest pedal
         			double someval_y = Pedal.getKnob_y(Pedal.pedalList.size()-1, i);	// get knob positions for latest pedal
                     double centerize_x = input[i].getWidth()/2;
@@ -250,6 +265,21 @@ public class MainClass2 extends JFrame{
                     g.drawImage( input[i],
                                  (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
                                  (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
+        	}
+        	if (i > spawn.getKnobCount()) {
+                if (i <= (spawn.getKnobCount() + spawn.getFsCount())){			// checks if element is a fs
+                        
+                	System.out.println("fs printing image, i is: " + i);
+                        double someval_x = Pedal.getFs_x(Pedal.pedalList.size()-1, i-spawn.getKnobCount());	// get knob positions for latest pedal
+                        double someval_y = Pedal.getFs_y(Pedal.pedalList.size()-1, i-spawn.getKnobCount());	// get knob positions for latest pedal
+                        double centerize_x = input[i].getWidth()/2;
+                        double centerize_y = input[i].getHeight()/2;
+                        System.out.println(someval_x);
+                        System.out.println(someval_y);
+                        g.drawImage( input[i],
+                                     (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
+                                     (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
+                }
         	}
         }
         ////////////////////////////////////////////////////////////
