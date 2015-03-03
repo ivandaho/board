@@ -199,7 +199,7 @@ public class MainClass2 extends JFrame{
 
     	boolean testbuilder = true;
     	if (Pedal.pedalID == 1) {
-            spawn = new Pedal_MXR();
+            spawn = new Pedal_KORG_Pitchblack();
             Pedal.pedalList.add(spawn);
         }
         else if (Pedal.pedalID == 3) {

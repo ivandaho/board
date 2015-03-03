@@ -37,7 +37,7 @@ public abstract class Pedal extends DraggableImageThing{
     private double knob_4_x = .5;
     private double knob_4_y = .2;
     
-    private String fsType = "1";
+    private String fsType = "2";
 
     private int fsCount = 1;
     
