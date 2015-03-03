@@ -43,8 +43,8 @@ public class MainClass2 extends JFrame{
 		
 		
 		///////////////////////////////////////////////////
-		int boardl = 800;
-		int boardw = 600;
+		int boardl = 960;
+		int boardw = 720;
 		m = new MainBoard("MainBoard"); //MainBoard();
 		m.setSize(boardl, boardw);
 		m.setVisible(true);
@@ -72,6 +72,21 @@ public class MainClass2 extends JFrame{
 				addNewPedal(3);
 			}
 		});
+
+		JButton jbnAddP_KORG_Pitchblack = new JButton("add Korg Pitchblack");
+		jbnAddP_KORG_Pitchblack.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				addNewPedal(4);
+			}
+		});
+		JButton jbnAddP_SANSAMP_BDDI = new JButton("add SansAmp BDDI");
+		jbnAddP_SANSAMP_BDDI.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				addNewPedal(9);
+			}
+		});
 		
 		JButton jbnRemoveP = new JButton("remove last pedal");
 		jbnRemoveP.addActionListener(new ActionListener() {
@@ -92,8 +107,10 @@ public class MainClass2 extends JFrame{
 
 		surface_menu.add(jbnAddP_MXR, BorderLayout.CENTER);
 		surface_menu.add(jbnAddP_MXR_BEF, BorderLayout.CENTER);
+		surface_menu.add(jbnAddP_KORG_Pitchblack, BorderLayout.CENTER);
+		surface_menu.add(jbnAddP_SANSAMP_BDDI, BorderLayout.CENTER);
 		surface_menu.add(jbnRemoveP, BorderLayout.WEST);
-		surface_menu.add(jbnTest, BorderLayout.WEST);
+		//surface_menu.add(jbnTest, BorderLayout.WEST);
 
 		m.add(surface, BorderLayout.CENTER);
 		m.add(surface_menu, BorderLayout.SOUTH);
@@ -199,16 +216,24 @@ public class MainClass2 extends JFrame{
 
     	boolean testbuilder = true;
     	if (Pedal.pedalID == 1) {
-            spawn = new Pedal_SANSAMP_BDDI();
+            spawn = new Pedal_MXR();
             Pedal.pedalList.add(spawn);
         }
         else if (Pedal.pedalID == 3) {
         	spawn = new Pedal_MXR_BEF();
         	Pedal.pedalList.add(spawn);
         }
+        else if (Pedal.pedalID == 4) {
+        	spawn = new Pedal_KORG_Pitchblack();
+        	Pedal.pedalList.add(spawn);
+        }
+        else if (Pedal.pedalID == 9) {
+        	spawn = new Pedal_SANSAMP_BDDI();
+        	Pedal.pedalList.add(spawn);
+        }
 		surface.add(spawn);
 
-    	int elements = 1 + spawn.getKnobCount() + spawn.getFsCount();		// DLATER: add foot switch count later
+    	int elements = 1 + spawn.getKnobCount() + spawn.getFsCount();
         BufferedImage[] input = new BufferedImage[elements+1]; 	// create array for the layers of pngs. 
         System.out.println("input length: " + input.length);
         														// total elements is base + knobCount + fsCount
