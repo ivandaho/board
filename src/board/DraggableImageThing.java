@@ -24,6 +24,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.Toolkit;
+import java.awt.geom.AffineTransform;
 import java.awt.image.ImageObserver;
 
 /**
@@ -60,6 +61,7 @@ public class DraggableImageThing extends DraggableThing implements ImageObserver
         //g2d.clearRect(0, 0, getWidth(), getHeight());
         if (image != null) {
             setAutoSizeDimension();
+            //rotateImage(g2d);											//experimental rotate
             g2d.drawImage(image, 0, 0, getWidth(), getHeight(), this);
         } else {
             //g2d.setColor(getBackground());
@@ -88,6 +90,21 @@ public class DraggableImageThing extends DraggableThing implements ImageObserver
             sW = (int) (sH * ratio);
         }
         return new Dimension(sW, sH);
+    }
+    private Dimension rotateDimension(Dimension source, Dimension dest) {
+        int sW = source.width;
+        int sH = source.height;
+        int dW = dest.width;
+        int dH = dest.height;
+        double ratio = ((double) sW) / ((double) sH);
+        if (sW >= sH) {
+            sW = dW;
+            sH = (int) (sW / ratio);
+        } else {
+            sH = dH;
+            sW = (int) (sH * ratio);
+        }
+        return new Dimension(sH, sW);
     }
 
     /**
@@ -183,6 +200,14 @@ public class DraggableImageThing extends DraggableThing implements ImageObserver
      */
     public void setImage(Image image) {
         this.image = image;
+        repaint();
+        setAutoSizeDimension();
+    }
+    public void rotateImage(Graphics2D g2d) {
+    	AffineTransform rt = new AffineTransform();
+    	rt.rotate(45);
+    	rt.translate(this.getWidth()/2, -this.getHeight()/2);
+    	g2d.setTransform(rt);
         repaint();
         setAutoSizeDimension();
     }
