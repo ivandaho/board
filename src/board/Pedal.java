@@ -36,6 +36,12 @@ public abstract class Pedal extends DraggableImageThing{
 
     private double knob_4_x = .5;
     private double knob_4_y = .2;
+
+    private double knob_5_x = .5;
+    private double knob_5_y = .2;
+
+    private double knob_6_x = .5;
+    private double knob_6_y = .2;
     
     private String fsType = "2";
 
@@ -142,6 +148,8 @@ public abstract class Pedal extends DraggableImageThing{
 			return Pedal.pedalList.get(thisPedal).knob_3_x;
 		case 5:
 			return Pedal.pedalList.get(thisPedal).knob_4_x;
+		case 6:
+			return Pedal.pedalList.get(thisPedal).knob_5_x;
         default:
         	return 0;
 		}
@@ -159,6 +167,8 @@ public abstract class Pedal extends DraggableImageThing{
 			return Pedal.pedalList.get(thisPedal).knob_3_y;
 		case 5:
 			return Pedal.pedalList.get(thisPedal).knob_4_y;
+		case 6:
+			return Pedal.pedalList.get(thisPedal).knob_5_y;
         default:
         	return 0;
 		}
@@ -224,12 +234,23 @@ public abstract class Pedal extends DraggableImageThing{
 	public double getKnob_4_y() {
 		return knob_4_y;
 	}
-
 	public void setKnob_4_x(double v) {
 		knob_4_x = (v);
 	}
 	public void setKnob_4_y(double v) {
 		knob_4_y = (v);
+	}
+	public double getKnob_5_x() {
+		return knob_5_x;
+	}
+	public double getKnob_5_y() {
+		return knob_5_y;
+	}
+	public void setKnob_5_x(double v) {
+		knob_5_x = (v);
+	}
+	public void setKnob_5_y(double v) {
+		knob_5_y = (v);
 	}
 
 	public static double getFs_x(int thisPedal, int i) {
