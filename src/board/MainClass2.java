@@ -54,6 +54,7 @@ public class MainClass2 extends JFrame{
 		surface_menu = new Surface();// or new JPanel
 		surface_menu.setBackground(Color.LIGHT_GRAY);
 		//surface_menu.setBorder(new LineBorder(Color.black, 1));
+String boardName = "PT_Mini";
 		//surface.setBackground(Color.darkGray);
 		surface.setLayout(null);
 		
@@ -123,7 +124,9 @@ public class MainClass2 extends JFrame{
 
             public void run() {
                 loadPedals();
+                setBoard();
             }
+
         });
         //////////////////////// pedal code //////////////////////
 		Pedal pedalcreate;
@@ -162,10 +165,8 @@ public class MainClass2 extends JFrame{
     }
 
     public static void addPedals(String fileName) {
-    	String boardName = "PT_Mini";
         //Get resources from Directory or Jar file
         Image img = Toolkit.getDefaultToolkit().createImage("images/"+fileName);
-        Image img_board = Toolkit.getDefaultToolkit().createImage("images/"+boardName);
         
         //Creates a draggableImageComponent and adds loaded image
         Pedal spawn = null ;
@@ -189,11 +190,6 @@ public class MainClass2 extends JFrame{
         	spawn = new Pedal_MXR();
         	Pedal.pedalList.add(spawn);
         }
-        Board_PT_Mini board = new Board_PT_Mini();
-        surface.add(board);
-        board.setImage(img);
-        board.setAutoSize(false);
-        board.setOverbearing(true);
         surface.add(spawn);//Adds this component to main container
         spawn.setImage(img);//Sets image
         spawn.setAutoSize(false);//The component get ratio w/h of source image
@@ -207,8 +203,6 @@ public class MainClass2 extends JFrame{
         int ix = (spawn.getWidth()*imagescale);
         int iy = (spawn.getHeight()*imagescale);
 
-        int ix_2 = (board.getWidth()*imagescale);
-        int iy_2 = (board.getHeight()*imagescale);
         
         spawn.setSize(ix, iy); // this is needed for picture to appear. 
                                // setWidth and setHeight does not replace this
@@ -216,11 +210,6 @@ public class MainClass2 extends JFrame{
         spawn.setHeight(iy);
         spawn.setLocation(cx + getRandom(delta / 2) - spawn.getWidth() / 2, cy + getRandom(delta / 2) - spawn.getHeight() / 2);
 
-        board.setSize(ix, iy); // this is needed for picture to appear. 
-                               // setWidth and setHeight does not replace this
-        board.setWidth(ix_2);
-        board.setHeight(iy_2);
-        board.setLocation(cx + getRandom(delta / 2) - board.getWidth() / 2, cy + getRandom(delta / 2) - spawn.getHeight() / 2);
         surface.repaint();
     }
 	////////////////////////////////////////////////////////////////
@@ -359,9 +348,37 @@ public class MainClass2 extends JFrame{
         spawn.setWidth(ix);
         spawn.setHeight(iy);
         spawn.setLocation(cx + getRandom(delta / 2) - spawn.getWidth() / 2, cy + getRandom(delta / 2) - spawn.getHeight() / 2);
+        System.out.println(spawn);
         surface.repaint();
     }
     
+    private static void setBoard() {
+    	String boardName = "PT_Mini";
+        Image img_board = Toolkit.getDefaultToolkit().createImage("images/"+boardName+ ".png");
+        Board_PT_Mini bgBoard = new Board_PT_Mini();
+        surface.add(bgBoard);//Adds this component to main container
+        bgBoard.setImage(img_board);//Sets image
+        bgBoard.setAutoSize(false);//The component get ratio w/h of source image
+
+        int cx = surface.getWidth() / 2;
+        int cy = surface.getHeight() / 2;
+        int ix = (bgBoard.getWidth()*imagescale);
+        int iy = (bgBoard.getHeight()*imagescale);
+
+        System.out.println(ix + "  " + iy);
+        
+        bgBoard.setSize(ix, iy); // this is needed for picture to appear. 
+                               // setWidth and setHeight does not replace this
+        bgBoard.setWidth(ix);
+        bgBoard.setHeight(iy);
+        bgBoard.setLocation(cx - bgBoard.getWidth()/2, cy - bgBoard.getHeight()/2);
+        System.out.println(bgBoard);
+        System.out.println(surface.getComponentCount());
+        surface.repaint();
+
+            
+            
+    }
     public static void removePedal() {
     	surface.remove(surface.getComponentCount()-1);
         surface.repaint();
