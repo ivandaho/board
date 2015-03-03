@@ -4,7 +4,7 @@ Pedalboard designer. (WIP)
 
 Create your own pedalboard layout from a selection of preset brands and models such as MXR, BOSS, TC, and EHX.
 
---------------------***Upcoming Features***--------------------
+######--------------------***Upcoming Features***--------------------
 
 - **Rotation of Pedals** - Rotate your pedals, in 90 degree steps.
   
@@ -23,3 +23,10 @@ the other for specific ordering.
 
 - **Create Your Own Custom Pedal** - Create your own custom pedal by specificing the dimensions, knobs, footswitches 
 and/or other features.
+
+######--------------------***Issues/Notes/TODO***--------------------
+
+- Clear image buffer after loading image, reduce RAM usage
+- Clear RAM after program closes
+- Anti-aliasing/better image scaling/vector handling
+- Scale pedal (base) size *before* adding knobs to prevent knobs from warping
