@@ -48,7 +48,7 @@ public class MainClass2 extends JFrame{
 		m = new MainBoard("MainBoard"); //MainBoard();
 		m.setSize(boardl, boardw);
 		m.setVisible(true);
-		//m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		surface = new Surface();// or new JPanel
 		surface_menu = new Surface();// or new JPanel
