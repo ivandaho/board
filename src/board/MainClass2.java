@@ -41,7 +41,6 @@ public class MainClass2 extends JFrame{
 
 	public static void main(String[] args) {
 		
-		
 		///////////////////////////////////////////////////
 		int boardl = 960;
 		int boardw = 720;
@@ -236,7 +235,7 @@ String boardName = "PT_Mini";
         	spawn = new Pedal_SANSAMP_BDDI();
         	Pedal.pedalList.add(spawn);
         }
-		surface.add(spawn);
+		surface.add(spawn, 0);
 
     	int elements = 1 + spawn.getKnobCount() + spawn.getFsCount();
         BufferedImage[] input = new BufferedImage[elements+1]; 	// create array for the layers of pngs. 
