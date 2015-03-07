@@ -379,8 +379,11 @@ String boardName = "PT_Mini";
             
     }
     public static void removePedal() {
-    	surface.remove(surface.getComponentCount()-1);
+    	if (surface.getComponentCount() > 1) {
+    	surface.remove(0);
+    	//surface.remove(surface.getComponentCount()-2);
         surface.repaint();
+    	}
     }
     public static int getRandom(int range) {
         int r = (int) (Math.random() * range) - range;

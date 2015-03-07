@@ -10,7 +10,7 @@ public class Pedal_MXR extends Pedal {
 		setWidth(60);
         setHeight(111);
         
-        //setKnobCount(2);
+        setKnobType("4");
         
 
         // setInPos();
