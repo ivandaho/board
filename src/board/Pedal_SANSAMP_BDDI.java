@@ -6,7 +6,7 @@ public class Pedal_SANSAMP_BDDI extends Pedal{
 		super("SANSAMP_BDDI");
 		setBase("SANSAMP_BDDI");
 		setPedalID(9);
-		setWidth(121);
+		setWidth(129);
         setHeight(95);
         
         setKnobType("3");
