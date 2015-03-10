@@ -103,10 +103,10 @@ public class MainClass {
 		System.out.println(pedalcreate);
 		System.out.println("pedal width: " + pedalcreate.getWidth());
 		System.out.println("pedal height: " + pedalcreate.getHeight());
-		System.out.println("in coordinates: " + pedalcreate.getIn_0_x()
-				+ ", " + pedalcreate.getIn_0_y());
-		System.out.println("out coordinates: " + pedalcreate.getOut_0_x()
-				+ ", " + pedalcreate.getOut_0_y());
+		System.out.println("in coordinates: " + pedalcreate.getInJack_0_x()
+				+ ", " + pedalcreate.getInJack_0_y());
+		System.out.println("out coordinates: " + pedalcreate.getOutJack_0_x()
+				+ ", " + pedalcreate.getOutJack_0_y());
 
 	}
     ////////////////////// end pedal code ////////////////////

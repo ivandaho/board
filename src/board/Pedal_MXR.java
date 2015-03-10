@@ -7,7 +7,7 @@ public class Pedal_MXR extends Pedal {
 		super("MXR");
 		setBase("MXR_orange");
 		setPedalID(1);
-		setWidth(60);
+		setWidth(70);
         setHeight(111);
         
         setKnobType("4");
