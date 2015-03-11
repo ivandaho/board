@@ -41,19 +41,19 @@ public class MainClass2 extends JFrame{
 
 	public static void main(String[] args) {
 		
-		
 		///////////////////////////////////////////////////
 		int boardl = 960;
 		int boardw = 720;
 		m = new MainBoard("MainBoard"); //MainBoard();
 		m.setSize(boardl, boardw);
 		m.setVisible(true);
-		//m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		surface = new Surface();// or new JPanel
 		surface_menu = new Surface();// or new JPanel
 		surface_menu.setBackground(Color.LIGHT_GRAY);
 		//surface_menu.setBorder(new LineBorder(Color.black, 1));
+String boardName = "PT_Mini";
 		//surface.setBackground(Color.darkGray);
 		surface.setLayout(null);
 		
@@ -123,7 +123,9 @@ public class MainClass2 extends JFrame{
 
             public void run() {
                 loadPedals();
+                setBoard();
             }
+
         });
         //////////////////////// pedal code //////////////////////
 		Pedal pedalcreate;
@@ -142,10 +144,10 @@ public class MainClass2 extends JFrame{
 		System.out.println(pedalcreate);
 		System.out.println("pedal width: " + pedalcreate.getWidth());
 		System.out.println("pedal height: " + pedalcreate.getHeight());
-		System.out.println("in coordinates: " + pedalcreate.getIn_0_x()
-				+ ", " + pedalcreate.getIn_0_y());
-		System.out.println("out coordinates: " + pedalcreate.getOut_0_x()
-				+ ", " + pedalcreate.getOut_0_y());
+		System.out.println("in coordinates: " + pedalcreate.getInJack_0_x()
+				+ ", " + pedalcreate.getInJack_0_y());
+		System.out.println("out coordinates: " + pedalcreate.getOutJack_0_x()
+				+ ", " + pedalcreate.getOutJack_0_y());
 
 	}
     ////////////////////// end pedal code ////////////////////
@@ -199,12 +201,14 @@ public class MainClass2 extends JFrame{
         int cy = surface.getHeight() / 2;
         int ix = (spawn.getWidth()*imagescale);
         int iy = (spawn.getHeight()*imagescale);
+
         
         spawn.setSize(ix, iy); // this is needed for picture to appear. 
                                // setWidth and setHeight does not replace this
         spawn.setWidth(ix);
         spawn.setHeight(iy);
         spawn.setLocation(cx + getRandom(delta / 2) - spawn.getWidth() / 2, cy + getRandom(delta / 2) - spawn.getHeight() / 2);
+
         surface.repaint();
     }
 	////////////////////////////////////////////////////////////////
@@ -231,9 +235,9 @@ public class MainClass2 extends JFrame{
         	spawn = new Pedal_SANSAMP_BDDI();
         	Pedal.pedalList.add(spawn);
         }
-		surface.add(spawn);
+		surface.add(spawn, 0);
 
-    	int elements = 1 + spawn.getKnobCount() + spawn.getFsCount();
+    	int elements = 1 + spawn.getKnobCount() + spawn.getFsCount() + spawn.getInJackCount() + spawn.getOutJackCount();
         BufferedImage[] input = new BufferedImage[elements+1]; 	// create array for the layers of pngs. 
         System.out.println("input length: " + input.length);
         														// total elements is base + knobCount + fsCount
@@ -250,28 +254,61 @@ public class MainClass2 extends JFrame{
         for ( int i = 1; i <= spawn.getKnobCount(); i++ ) {			// loop to get knob images
             try {
                 File f2 = new File( "images/knobs/knob_" + spawn.getKnobType() + ".png" );
-                //System.out.println(f2);
-                System.out.println("i is: " + i + " ok loop");
                 input[i] = ImageIO.read( f2 );
             }
             catch ( IOException x ) {
                 x.printStackTrace();
             }
-            
-
         }
-        for ( int i = spawn.getKnobCount()+1; i <= spawn.getKnobCount()+1+spawn.getFsCount(); i++ ) { // loop to get fs images
+
+        int eleCount = spawn.getKnobCount();
+        int eleCountNext = spawn.getFsCount();
+
+        for ( int i = eleCount + 1; i <= eleCount + eleCountNext + 1; i++ ) { // loop to get fs images
             try {
                 File f2 = new File( "images/fs/fs_" + spawn.getFsType() + ".png" );
-                System.out.println("i is: " + i);
                 input[i] = ImageIO.read( f2 );
             }
             catch ( IOException x ) {
                 x.printStackTrace();
             }
-            
-
         }
+
+        System.out.println("starting loop to get injacks");
+
+        eleCount = eleCount + eleCountNext;
+        eleCountNext = spawn.getInJackCount();
+
+        for ( int i = eleCount + 1; i <= eleCount + eleCountNext + 1; i++ ) { // loop to get injack images
+            try {
+            	System.out.println("injack i is: "+ i);
+                File f2 = new File( "images/injacks/inj_" + spawn.getInJackType() + ".png" );
+                System.out.println(f2);
+                input[i] = ImageIO.read( f2 );
+            }
+            catch ( IOException x ) {
+                x.printStackTrace();
+            }
+        }
+
+        System.out.println("starting loop to get outjacks");
+
+        eleCount = eleCount + eleCountNext;
+        eleCountNext = spawn.getOutJackCount();
+
+        for ( int i = eleCount + 1; i <= eleCount + eleCountNext + 1; i++ ) { // loop to get injack images
+            try {
+            	System.out.println("outjack i is: "+ i);
+                File f2 = new File( "images/outjacks/outj_" + spawn.getInJackType() + ".png" );
+                System.out.println(f2);
+                input[i] = ImageIO.read( f2 );
+            }
+            catch ( IOException x ) {
+                x.printStackTrace();
+            }
+        }
+
+        // starting to draw image, after element images have been stored in an array
         BufferedImage output = new BufferedImage( 
                 input[0].getWidth(), 
                 input[0].getHeight(), 
@@ -279,6 +316,16 @@ public class MainClass2 extends JFrame{
 
         Graphics g = output.getGraphics();
         g.drawImage((input[0]), 0, 0, null);
+        
+        int fsRangeFirst = spawn.getKnobCount() + 1;
+        int fsRangeLast = spawn.getKnobCount() + spawn.getFsCount();
+        
+        int inJackRangeFirst = fsRangeLast + 1;
+        int inJackRangeLast = fsRangeLast + spawn.getInJackCount();
+
+        int outJackRangeFirst = inJackRangeLast + 1;
+        int outJackRangeLast = inJackRangeLast + spawn.getInJackCount();
+
         for ( int i = 1; i < input.length; i++ ) {			// draws the rest of the elements
         	if (i <= (spawn.getKnobCount())){			// checks if element is a knob
         			
@@ -291,21 +338,39 @@ public class MainClass2 extends JFrame{
                                  (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
                                  (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
         	}
-        	if (i > spawn.getKnobCount()) {
-                if (i <= (spawn.getKnobCount() + spawn.getFsCount())){			// checks if element is a fs
-                        
-                	System.out.println("fs printing image, i is: " + i);
-                        double someval_x = Pedal.getFs_x(Pedal.pedalList.size()-1, i-spawn.getKnobCount());	// get knob positions for latest pedal
-                        double someval_y = Pedal.getFs_y(Pedal.pedalList.size()-1, i-spawn.getKnobCount());	// get knob positions for latest pedal
-                        double centerize_x = input[i].getWidth()/2;
-                        double centerize_y = input[i].getHeight()/2;
-                        System.out.println(someval_x);
-                        System.out.println(someval_y);
-                        g.drawImage( input[i],
-                                     (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
-                                     (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
-                }
-        	}
+            if (i >= fsRangeFirst && i <= fsRangeLast){
+                    
+                System.out.println("fs printing image, i is: " + i);
+                    double someval_x = Pedal.getFs_x(Pedal.pedalList.size()-1, i-spawn.getKnobCount());	// get knob positions for latest pedal
+                    double someval_y = Pedal.getFs_y(Pedal.pedalList.size()-1, i-spawn.getKnobCount());	// get knob positions for latest pedal
+                    double centerize_x = input[i].getWidth()/2;
+                    double centerize_y = input[i].getHeight()/2;
+                    g.drawImage( input[i],
+                                 (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
+                                 (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
+            }
+            if (i >= inJackRangeFirst && i <= inJackRangeLast){
+
+                System.out.println("injack printing image, i is: " + i);
+                    double someval_x = Pedal.getInJack_x(Pedal.pedalList.size()-1, i-spawn.getKnobCount()-spawn.getInJackCount());	// get knob positions for latest pedal
+                    double someval_y = Pedal.getInJack_y(Pedal.pedalList.size()-1, i-spawn.getKnobCount()-spawn.getInJackCount());	// get knob positions for latest pedal
+                    double centerize_x = input[i].getWidth()/2;
+                    double centerize_y = input[i].getHeight()/2;
+                    g.drawImage( input[i],
+                                 (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
+                                 (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
+            }
+            if (i >= outJackRangeFirst && i <= outJackRangeLast){
+
+                System.out.println("outjack printing image, i is: " + i);
+                    double someval_x = Pedal.getOutJack_x(Pedal.pedalList.size()-1, i-spawn.getKnobCount()-spawn.getInJackCount()-spawn.getOutJackCount());	// get knob positions for latest pedal
+                    double someval_y = Pedal.getOutJack_y(Pedal.pedalList.size()-1, i-spawn.getKnobCount()-spawn.getInJackCount()-spawn.getOutJackCount());	// get knob positions for latest pedal
+                    double centerize_x = input[i].getWidth()/2;
+                    double centerize_y = input[i].getHeight()/2;
+                    g.drawImage( input[i],
+                                 (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
+                                 (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
+            }
         }
         ////////////////////////////////////////////////////////////
     	String fileName = (Pedal.pedalID + ".png");
@@ -343,12 +408,43 @@ public class MainClass2 extends JFrame{
         spawn.setWidth(ix);
         spawn.setHeight(iy);
         spawn.setLocation(cx + getRandom(delta / 2) - spawn.getWidth() / 2, cy + getRandom(delta / 2) - spawn.getHeight() / 2);
+        System.out.println(spawn + ", spawned");
         surface.repaint();
     }
     
-    public static void removePedal() {
-    	surface.remove(surface.getComponentCount()-1);
+    private static void setBoard() {
+    	String boardName = "PT_Mini";
+        Image img_board = Toolkit.getDefaultToolkit().createImage("images/"+boardName+ ".png");
+        Board_PT_Mini bgBoard = new Board_PT_Mini();
+        surface.add(bgBoard);//Adds this component to main container
+        bgBoard.setImage(img_board);//Sets image
+        bgBoard.setAutoSize(false);//The component get ratio w/h of source image
+
+        int cx = surface.getWidth() / 2;
+        int cy = surface.getHeight() / 2;
+        int ix = (bgBoard.getWidth()*imagescale);
+        int iy = (bgBoard.getHeight()*imagescale);
+
+        System.out.println(ix + "  " + iy);
+        
+        bgBoard.setSize(ix, iy); // this is needed for picture to appear. 
+                               // setWidth and setHeight does not replace this
+        bgBoard.setWidth(ix);
+        bgBoard.setHeight(iy);
+        bgBoard.setLocation(cx - bgBoard.getWidth()/2, cy - bgBoard.getHeight()/2);
+        System.out.println(bgBoard);
+        System.out.println(surface.getComponentCount());
         surface.repaint();
+
+            
+            
+    }
+    public static void removePedal() {
+    	if (surface.getComponentCount() > 1) {
+    	surface.remove(0);
+    	//surface.remove(surface.getComponentCount()-2);
+        surface.repaint();
+    	}
     }
     public static int getRandom(int range) {
         int r = (int) (Math.random() * range) - range;

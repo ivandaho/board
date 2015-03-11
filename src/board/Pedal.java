@@ -12,12 +12,7 @@ public abstract class Pedal extends DraggableImageThing{
 	private double w = 100; 
     private double h = 100;
     
-    private double in_0_x = w;
-    private double in_0_y = h/2;
-    
-    private double out_0_x = 0;
-    private double out_0_y = h/2;
-
+    // knob stuff
     private String knobType = "1";
     
     private int knobCount = 1;
@@ -43,71 +38,6 @@ public abstract class Pedal extends DraggableImageThing{
     private double knob_6_x = .5;
     private double knob_6_y = .2;
     
-    private String fsType = "2";
-
-    private int fsCount = 1;
-    
-    private double fs_0_x = .5;
-    private double fs_0_y = .7;
-
-    public Pedal(){
-    	this.PedalType = "MXR";
-    }
-
-    public Pedal(String type){
-    	this.PedalType = type;
-	}
-	
-	public void setBase(String c) {
-		base = c;
-	}
-	public String getColor() {
-		return base;
-	}
-
-	public void setSize(double setw, double seth) {
-		w = setw;
-	}
-	public void setWidth(double setw) {
-		w = setw;
-	}
-	public void setHeight(double seth) {
-		h = seth;
-	}
-	
-	public void setInPos(double setx, double sety) {
-		in_0_x = setx;
-		in_0_y = sety;
-	}
-	public void setOutPos(double setx, double sety) {
-		out_0_y = setx;
-		out_0_y = sety;
-	}
-	
-	public void setPedalID(int id) {
-		pedalID = 1;
-	}
-
-	public int getWidth() {
-		return (int) w;
-	}
-	public int getHeight() {
-		return (int) h;
-	}
-
-	public double getIn_0_x() {
-		return in_0_x;
-	}
-	public double getIn_0_y() {
-		return in_0_y;
-	}
-	public double getOut_0_x() {
-		return out_0_x;
-	}
-	public double getOut_0_y() {
-		return out_0_y;
-	}
-	
 	public void setKnobType(String t) {
 		knobType = t;
 	}
@@ -122,20 +52,6 @@ public abstract class Pedal extends DraggableImageThing{
 		return knobCount;
 	}
 	
-	public void setFsType(String t) {
-		fsType = t;
-	}
-	public String getFsType() {
-		return fsType;
-	}
-
-	public void setFsCount(int c) {
-		fsCount = c;
-	}
-	public int getFsCount() {
-		return fsCount;
-	}
-
 	public static double getKnob_x(int thisPedal, int i) {
 		switch (i) {
 		case 1:
@@ -154,7 +70,6 @@ public abstract class Pedal extends DraggableImageThing{
         	return 0;
 		}
 	}
-
 	public static double getKnob_y(int thisPedal, int i) {
 		switch (i) {
 		case 1:
@@ -180,12 +95,11 @@ public abstract class Pedal extends DraggableImageThing{
 	public double getKnob_0_y() {
 		return knob_0_y;
 	}
-
 	public void setKnob_0_x(double v) {
-		knob_0_x = (v);
+		knob_0_x = v;
 	}
 	public void setKnob_0_y(double v) {
-		knob_0_y = (v);
+		knob_0_y = v;
 	}
 
 	public double getKnob_1_x() {
@@ -194,12 +108,11 @@ public abstract class Pedal extends DraggableImageThing{
 	public double getKnob_1_y() {
 		return knob_1_y;
 	}
-
 	public void setKnob_1_x(double v) {
-		knob_1_x = (v);
+		knob_1_x = v;
 	}
 	public void setKnob_1_y(double v) {
-		knob_1_y = (v);
+		knob_1_y = v;
 	}
 
 	public double getKnob_2_x() {
@@ -208,26 +121,26 @@ public abstract class Pedal extends DraggableImageThing{
 	public double getKnob_2_y() {
 		return knob_2_y;
 	}
-
 	public void setKnob_2_x(double v) {
-		knob_2_x = (v);
+		knob_2_x = v;
 	}
 	public void setKnob_2_y(double v) {
-		knob_2_y = (v);
+		knob_2_y = v;
 	}
+
 	public double getKnob_3_x() {
 		return knob_3_x;
 	}
 	public double getKnob_3_y() {
 		return knob_3_y;
 	}
-
 	public void setKnob_3_x(double v) {
-		knob_3_x = (v);
+		knob_3_x = v;
 	}
 	public void setKnob_3_y(double v) {
-		knob_3_y = (v);
+		knob_3_y = v;
 	}
+
 	public double getKnob_4_x() {
 		return knob_4_x;
 	}
@@ -235,11 +148,12 @@ public abstract class Pedal extends DraggableImageThing{
 		return knob_4_y;
 	}
 	public void setKnob_4_x(double v) {
-		knob_4_x = (v);
+		knob_4_x = v;
 	}
 	public void setKnob_4_y(double v) {
-		knob_4_y = (v);
+		knob_4_y = v;
 	}
+
 	public double getKnob_5_x() {
 		return knob_5_x;
 	}
@@ -247,10 +161,32 @@ public abstract class Pedal extends DraggableImageThing{
 		return knob_5_y;
 	}
 	public void setKnob_5_x(double v) {
-		knob_5_x = (v);
+		knob_5_x = v;
 	}
 	public void setKnob_5_y(double v) {
-		knob_5_y = (v);
+		knob_5_y = v;
+	}
+
+    // fs stuff
+    private String fsType = "2";
+
+    private int fsCount = 1;
+    
+    private double fs_0_x = .5;
+    private double fs_0_y = .7;
+    
+	public void setFsType(String t) {
+		fsType = t;
+	}
+	public String getFsType() {
+		return fsType;
+	}
+
+	public void setFsCount(int c) {
+		fsCount = c;
+	}
+	public int getFsCount() {
+		return fsCount;
 	}
 
 	public static double getFs_x(int thisPedal, int i) {
@@ -261,7 +197,6 @@ public abstract class Pedal extends DraggableImageThing{
         	return 0;
 		}
 	}
-
 	public static double getFs_y(int thisPedal, int i) {
 		switch (i) {
 		case 1:
@@ -279,11 +214,158 @@ public abstract class Pedal extends DraggableImageThing{
 	}
 
 	public void setFs_0_x(double v) {
-		fs_0_x = (v);
+		fs_0_x = v;
 	}
 	public void setFs_0_y(double v) {
-		fs_0_y = (v);
+		fs_0_y = v;
 	}
+
+    // input jack stuff
+	private String inJackType = "1";
+
+    private int inJackCount = 1;
+    
+    private double inJack_0_x = 0.945;
+    private double inJack_0_y = .5;
+    
+	public void setInJackType(String t) {
+		inJackType = t;
+	}
+	public String getInJackType() {
+		return inJackType;
+	}
+
+	public void setInJackCount(int c) {
+		inJackCount = c;
+	}
+	public int getInJackCount() {
+		return inJackCount;
+	}
+	
+	public static double getInJack_x(int thisPedal, int i) {
+		switch (i) {
+		case 1:
+			return Pedal.pedalList.get(thisPedal).inJack_0_x;
+			default:
+				return 0;
+		}
+	}
+	public static double getInJack_y(int thisPedal, int i) {
+		switch (i) {
+		case 1:
+			return Pedal.pedalList.get(thisPedal).inJack_0_y;
+			default:
+				return 0;
+		}
+	}
+	
+	public double getInJack_0_x() {
+		return inJack_0_x;
+	}
+	public double getInJack_0_y() {
+		return inJack_0_y;
+	}
+
+	public void setInJack_0_x(double v) {
+		inJack_0_x = v;
+	}
+	public void setInJack_0_y(double v) {
+		inJack_0_y = v;
+	}
+
+	// outjack (incomplete)
+
+	private String outJackType = "1";
+
+    private int outJackCount = 1;
+    
+    private double outJack_0_x = 0.055;
+    private double outJack_0_y = .5;
+    
+	public void setOutJackType(String t) {
+		outJackType = t;
+	}
+	public String getOutJackType() {
+		return outJackType;
+	}
+
+	public void setOutJackCount(int c) {
+		outJackCount = c;
+	}
+	public int getOutJackCount() {
+		return outJackCount;
+	}
+	
+	public static double getOutJack_x(int thisPedal, int i) {
+		switch (i) {
+		case 1:
+			return Pedal.pedalList.get(thisPedal).outJack_0_x;
+			default:
+				return 0;
+		}
+	}
+	public static double getOutJack_y(int thisPedal, int i) {
+		switch (i) {
+		case 1:
+			return Pedal.pedalList.get(thisPedal).outJack_0_y;
+			default:
+				return 0;
+		}
+	}
+	
+	public double getOutJack_0_x() {
+		return outJack_0_x;
+	}
+	public double getOutJack_0_y() {
+		return outJack_0_y;
+	}
+
+	public void setOutJack_0_x(double v) {
+		outJack_0_x = v;
+	}
+	public void setOutJack_0_y(double v) {
+		outJack_0_y = v;
+	}
+	
+    // constructors and other stuff
+    public Pedal(){
+    	this.PedalType = "MXR";
+    }
+
+    public Pedal(String type){
+    	this.PedalType = type;
+	}
+	
+	public void setBase(String c) {
+		base = c;
+	}
+	public String getColor() {
+		return base;
+	}
+
+	public void setSize(double setw, double seth) {
+		w = setw;
+	}
+	public void setWidth(double setw) {
+		w = setw;
+	}
+	public void setHeight(double seth) {
+		h = seth;
+	}
+	
+	
+	public void setPedalID(int id) {
+		pedalID = 1;
+	}
+
+	public int getWidth() {
+		return (int) w;
+	}
+	public int getHeight() {
+		return (int) h;
+	}
+
+
 	public String toString() {
 		return "pedal type is: " + PedalType;
 	}
@@ -291,6 +373,7 @@ public abstract class Pedal extends DraggableImageThing{
 		return pedalID;
 	}
     // public abstract stuff
+
 
 
 }

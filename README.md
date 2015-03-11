@@ -27,6 +27,4 @@ and/or other features.
 ######--------------------***Issues/Notes/TODO***--------------------
 
 - Clear image buffer after loading image, reduce RAM usage
-- Clear RAM after program closes
-- Anti-aliasing/better image scaling/vector handling
 - Scale pedal (base) size *before* adding knobs to prevent knobs from warping
