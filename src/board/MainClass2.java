@@ -239,8 +239,7 @@ String boardName = "PT_Mini";
 
     	int elements = 1 + spawn.getKnobCount() + spawn.getFsCount() + spawn.getInJackCount() + spawn.getOutJackCount();
         BufferedImage[] input = new BufferedImage[elements+1]; 	// create array for the layers of pngs. 
-        System.out.println("input length: " + input.length);
-        														// total elements is base + knobCount + fsCount
+        														// elements is number of total components of a pedal.
 
     	//////////////////////////////////////////////////////////////
         try {
@@ -264,7 +263,7 @@ String boardName = "PT_Mini";
         int eleCount = spawn.getKnobCount();
         int eleCountNext = spawn.getFsCount();
 
-        for ( int i = eleCount + 1; i <= eleCount + eleCountNext + 1; i++ ) { // loop to get fs images
+        for ( int i = eleCount + 1; i < eleCount + eleCountNext + 1; i++ ) { // loop to get fs images
             try {
                 File f2 = new File( "images/fs/fs_" + spawn.getFsType() + ".png" );
                 input[i] = ImageIO.read( f2 );
@@ -277,13 +276,12 @@ String boardName = "PT_Mini";
         System.out.println("starting loop to get injacks");
 
         eleCount = eleCount + eleCountNext;
+
         eleCountNext = spawn.getInJackCount();
 
-        for ( int i = eleCount + 1; i <= eleCount + eleCountNext + 1; i++ ) { // loop to get injack images
+        for ( int i = eleCount + 1; i < eleCount + eleCountNext + 1; i++ ) { // loop to get injack images
             try {
-            	System.out.println("injack i is: "+ i);
-                File f2 = new File( "images/injacks/inj_" + spawn.getInJackType() + ".png" );
-                System.out.println(f2);
+                File f2 = new File( "images/jacks/" + Pedal.getInJackDir(Pedal.pedalList.size()-1, i - eleCount) + "_" + spawn.getInJackType() + ".png" );
                 input[i] = ImageIO.read( f2 );
             }
             catch ( IOException x ) {
@@ -296,11 +294,9 @@ String boardName = "PT_Mini";
         eleCount = eleCount + eleCountNext;
         eleCountNext = spawn.getOutJackCount();
 
-        for ( int i = eleCount + 1; i <= eleCount + eleCountNext + 1; i++ ) { // loop to get injack images
+        for ( int i = eleCount + 1; i < eleCount + eleCountNext + 1; i++ ) { // loop to get injack images
             try {
-            	System.out.println("outjack i is: "+ i);
-                File f2 = new File( "images/outjacks/outj_" + spawn.getInJackType() + ".png" );
-                System.out.println(f2);
+                File f2 = new File( "images/jacks/" + Pedal.getOutJackDir(Pedal.pedalList.size()-1, i - eleCount) + "_" + spawn.getOutJackType() + ".png" );
                 input[i] = ImageIO.read( f2 );
             }
             catch ( IOException x ) {
@@ -409,6 +405,7 @@ String boardName = "PT_Mini";
         spawn.setHeight(iy);
         spawn.setLocation(cx + getRandom(delta / 2) - spawn.getWidth() / 2, cy + getRandom(delta / 2) - spawn.getHeight() / 2);
         System.out.println(spawn + ", spawned");
+        System.out.println("######################");
         surface.repaint();
     }
     
