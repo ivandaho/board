@@ -320,52 +320,57 @@ String boardName = "PT_Mini";
         int inJackRangeLast = fsRangeLast + spawn.getInJackCount();
 
         int outJackRangeFirst = inJackRangeLast + 1;
-        int outJackRangeLast = inJackRangeLast + spawn.getInJackCount();
+        int outJackRangeLast = inJackRangeLast + spawn.getOutJackCount();
 
         for ( int i = 1; i < input.length; i++ ) {			// draws the rest of the elements
         	if (i <= (spawn.getKnobCount())){			// checks if element is a knob
-        			
-                	System.out.println("knob printing image, i is: " + i);
-        			double someval_x = Pedal.getKnob_x(Pedal.pedalList.size()-1, i);	// get knob positions for latest pedal
-        			double someval_y = Pedal.getKnob_y(Pedal.pedalList.size()-1, i);	// get knob positions for latest pedal
-                    double centerize_x = input[i].getWidth()/2;
-                    double centerize_y = input[i].getHeight()/2;
-                    g.drawImage( input[i],
-                                 (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
-                                 (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
+                System.out.println("knob printing image, i is: " + i);
+                double someval_x = Pedal.getKnob_x(Pedal.pedalList.size()-1, i);	// get knob i positions for latest pedal
+                double someval_y = Pedal.getKnob_y(Pedal.pedalList.size()-1, i);	// get knob i positions for latest pedal
+                double centerize_x = input[i].getWidth()/2;
+                double centerize_y = input[i].getHeight()/2;
+                g.drawImage( input[i],
+                             (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
+                             (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
         	}
+        	int fsNumber;
             if (i >= fsRangeFirst && i <= fsRangeLast){
-                    
                 System.out.println("fs printing image, i is: " + i);
-                    double someval_x = Pedal.getFs_x(Pedal.pedalList.size()-1, i-spawn.getKnobCount());	// get knob positions for latest pedal
-                    double someval_y = Pedal.getFs_y(Pedal.pedalList.size()-1, i-spawn.getKnobCount());	// get knob positions for latest pedal
-                    double centerize_x = input[i].getWidth()/2;
-                    double centerize_y = input[i].getHeight()/2;
-                    g.drawImage( input[i],
-                                 (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
-                                 (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
+                fsNumber = i-spawn.getKnobCount();
+                System.out.println("getting fs number " + fsNumber);
+                double someval_x = Pedal.getFs_x(Pedal.pedalList.size()-1, fsNumber);	// get fs positions for latest pedal
+                double someval_y = Pedal.getFs_y(Pedal.pedalList.size()-1, fsNumber);	// get fs positions for latest pedal
+                double centerize_x = input[i].getWidth()/2;
+                double centerize_y = input[i].getHeight()/2;
+                g.drawImage( input[i],
+                             (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
+                             (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
             }
+            int inJackNumber;
             if (i >= inJackRangeFirst && i <= inJackRangeLast){
-
                 System.out.println("injack printing image, i is: " + i);
-                    double someval_x = Pedal.getInJack_x(Pedal.pedalList.size()-1, i-spawn.getKnobCount()-spawn.getInJackCount());	// get knob positions for latest pedal
-                    double someval_y = Pedal.getInJack_y(Pedal.pedalList.size()-1, i-spawn.getKnobCount()-spawn.getInJackCount());	// get knob positions for latest pedal
-                    double centerize_x = input[i].getWidth()/2;
-                    double centerize_y = input[i].getHeight()/2;
-                    g.drawImage( input[i],
-                                 (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
-                                 (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
+                inJackNumber = i-spawn.getKnobCount()-spawn.getFsCount();
+                double someval_x = Pedal.getInJack_x(Pedal.pedalList.size()-1, inJackNumber);	
+                double someval_y = Pedal.getInJack_y(Pedal.pedalList.size()-1, inJackNumber);
+                double centerize_x = input[i].getWidth()/2;
+                double centerize_y = input[i].getHeight()/2;
+                g.drawImage( input[i],
+                             (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
+                             (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
             }
+            int outJackNumber;
             if (i >= outJackRangeFirst && i <= outJackRangeLast){
-
-                System.out.println("outjack printing image, i is: " + i);
-                    double someval_x = Pedal.getOutJack_x(Pedal.pedalList.size()-1, i-spawn.getKnobCount()-spawn.getInJackCount()-spawn.getOutJackCount());	// get knob positions for latest pedal
-                    double someval_y = Pedal.getOutJack_y(Pedal.pedalList.size()-1, i-spawn.getKnobCount()-spawn.getInJackCount()-spawn.getOutJackCount());	// get knob positions for latest pedal
-                    double centerize_x = input[i].getWidth()/2;
-                    double centerize_y = input[i].getHeight()/2;
-                    g.drawImage( input[i],
-                                 (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
-                                 (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
+            	outJackNumber = i-spawn.getKnobCount()-spawn.getFsCount()-spawn.getInJackCount();
+                double someval_x = Pedal.getOutJack_x(Pedal.pedalList.size()-1, outJackNumber);
+                double someval_y = Pedal.getOutJack_y(Pedal.pedalList.size()-1, outJackNumber);
+                double centerize_x = input[i].getWidth()/2;
+                double centerize_y = input[i].getHeight()/2;
+                g.drawImage( input[i],
+                             (int)(input[0].getWidth()*someval_x - centerize_x),			// this one is the pos
+                             (int)(input[0].getHeight()*someval_y - centerize_y), null );	// 
+                System.out.println("outjack printing image, i is: " + i + " somevals: " + 
+                                 someval_x + ", " + 
+                                		 someval_y);
             }
         }
         ////////////////////////////////////////////////////////////
