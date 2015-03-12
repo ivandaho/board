@@ -23,8 +23,3 @@ the other for specific ordering.
 
 - **Create Your Own Custom Pedal** - Create your own custom pedal by specificing the dimensions, knobs, footswitches 
 and/or other features.
-
-######--------------------***Issues/Notes/TODO***--------------------
-
-- Clear image buffer after loading image, reduce RAM usage
-- Scale pedal (base) size *before* adding knobs to prevent knobs from warping
