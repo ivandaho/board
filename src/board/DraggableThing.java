@@ -83,6 +83,9 @@ public class DraggableThing extends JComponent {
                 Point position = new Point(mouseOnScreen.x - parentOnScreen.x - anchorX, mouseOnScreen.y - parentOnScreen.y - anchorY);
                 setLocation(position);
 
+                if(MainClass2.surface.getComponentCount() > 5) {
+                    MainClass2.detectProximity();
+                }
                 //Change Z-Buffer if it is "overbearing"
                 if (overbearing) {
                     getParent().setComponentZOrder(handle, 0);

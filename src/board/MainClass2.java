@@ -45,6 +45,10 @@ public class MainClass2 extends JFrame{
     public static Point indyP;
     public static Image indyImg = Toolkit.getDefaultToolkit().createImage("images/indy_normal.png");
     public static Image indySH = Toolkit.getDefaultToolkit().createImage("images/indy_red.png");
+    
+    public static Point cableStart;
+    public static Point cableEnd;
+    public static Point newP;
 
     
 	public static void main(String[] args) {
@@ -142,6 +146,7 @@ String boardName = "PT_Mini";
                 loadPedals();
                 addIndicator();
                 setBoard();
+                attachCable();
             }
 
         });
@@ -427,7 +432,7 @@ String boardName = "PT_Mini";
         spawn.setWidth(ix);
         spawn.setHeight(iy);
         spawn.setLocation(cx + getRandom(delta / 2) - spawn.getWidth() / 2, cy + getRandom(delta / 2) - spawn.getHeight() / 2);
-        spawn.setBorder(new LineBorder(Color.black, 1));
+        //spawn.setBorder(new LineBorder(Color.black, 1));
         System.out.println(spawn + ", spawned");
         System.out.println("######################");
         surface.repaint();
@@ -473,8 +478,6 @@ String boardName = "PT_Mini";
         indy.setHeight(iy);
         indyP = new Point(cx - indy.getWidth()/2, cy - indy.getHeight()/2);
         indy.setLocation(indyP);
-        //System.out.println(indy);
-        //indy.somethingHappened();
         surface.repaint();
     }
 
@@ -490,35 +493,102 @@ String boardName = "PT_Mini";
         return r;
     }
     public static void testButtonFunc() {
-    	Component[] test = surface.getComponents();
-        detectProximity();
-    	for (int i=0; i<test.length-2; i++){
+    	//attachCable();
+    	for (int i = 0; i < surface.getComponentCount(); i++) {
+    	System.out.println(surface.getComponent(i));
+    	}
+        //detectProximity();
+    	/*for (int i=0; i<test.length-2; i++){
 
             Point parentOnScreen = surface.getComponent(i).getParent().getLocation();
             System.out.println(surface.getComponent(i) + ", loc = " + surface.getComponent(i).getLocation());
             ((Indicator) surface.getComponentAt(indyP)).somethingHappened();
-    	} 
+    	}  */
     }
 
 	public static void detectProximity() {
-		int currentX, currentY;
-		int compareToX, compareToY;
+		if (surface.getComponentCount() > 2) {
+                
+            int currentX, currentY;
+            int compareToX, compareToY;
 
-		Pedal lastTouch = (Pedal) surface.getComponent(0);
-		currentX = (int) lastTouch.getLocation().getX() + lastTouch.getWidth();
-		currentY = (int) lastTouch.getLocation().getY();
+            Pedal lastTouch = (Pedal) surface.getComponent(0);
+            currentX = (int) lastTouch.getLocation().getX() + lastTouch.getWidth();
+            currentY = (int) lastTouch.getLocation().getY();
 
-		Pedal compare = (Pedal) surface.getComponent(1);
-		compareToX = (int) compare.getLocation().getX();
-		compareToY = (int) compare.getLocation().getY();
-		
-		
-		int distanceX = currentX - compareToX;
-		int distanceY = currentY - compareToY;
-		int distance = (int) Math.abs(Math.sqrt(distanceX * distanceX + distanceY * distanceY));
-		System.out.println("distance between pedals is: " + distance);
+            Pedal compare = (Pedal) surface.getComponent(1);
+            compareToX = (int) compare.getLocation().getX();
+            compareToY = (int) compare.getLocation().getY();
+            
+            
+            int distanceX = currentX - compareToX;
+            int distanceY = currentY - compareToY;
+            int distance = (int) Math.abs(Math.sqrt(distanceX * distanceX + distanceY * distanceY));
+            
+            if (distance < 83 && distance > 67) {
+                ((Indicator) surface.getComponentAt(indyP)).somethingHappened();
+
+                //cableStart = compare.getLocation();
+                int getLocX = (int) compare.getLocation().getX();
+                int getLocY = (int) compare.getLocation().getY();
+                newP = new Point (getLocX - 34, getLocY + compare.getHeight()/2 - 79); 
+                surface.getComponent(surface.getComponentCount()-4).setLocation(newP);
+                surface.getComponent(surface.getComponentCount()-4).setVisible(true);
+
+                int getLocX2 = (int) lastTouch.getLocation().getX() + lastTouch.getWidth();
+                int getLocY2 = (int) lastTouch.getLocation().getY();
+                newP = new Point (getLocX2, getLocY2 + lastTouch.getHeight()/2 - 79); 
+                surface.getComponent(surface.getComponentCount()-3).setLocation(newP);
+                surface.getComponent(surface.getComponentCount()-3).setVisible(true);
+            }
+            else {
+                ((Indicator) surface.getComponentAt(indyP)).nothingToSee();
+                //System.out.println("distance between pedals is: " + distance);
+                surface.getComponent(surface.getComponentCount()-4).setVisible(false);
+                surface.getComponent(surface.getComponentCount()-3).setVisible(false);
+            }
+        }
 		
 		
 		//currentX = surface.getlocationI/();
+	}
+	
+	public static void attachCable() {
+        Image img_cable = Toolkit.getDefaultToolkit().createImage("images/cables/l_1.png");
+        Cable c = new Cable();
+        surface.add(c, surface.getComponentCount()-2);
+        c.setImage(img_cable);//Sets image
+        c.setAutoSize(false);//The component get ratio w/h of source image
+        int ix = (c.getWidth());
+        int iy = (c.getHeight());
+        c.setSize(ix, iy); // this is needed for picture to appear. 
+        c.setWidth(ix);
+        c.setHeight(iy);
+        c.setLocation(200, 200);
+        System.out.println(c);
+        c.setVisible(false);
+        surface.repaint();
+		
+		
+        Image img_cable2 = Toolkit.getDefaultToolkit().createImage("images/cables/r_1.png");
+        Cable c2 = new Cable();
+        surface.add(c2, surface.getComponentCount()-2);
+        c2.setImage(img_cable2);//Sets image
+        c2.setAutoSize(false);//The component get ratio w/h of source image
+        int ix2 = (c2.getWidth());
+        int iy2 = (c2.getHeight());
+        c2.setSize(ix2, iy2); // this is needed for picture to appear. 
+        c2.setWidth(ix2);
+        c2.setHeight(iy2);
+        c2.setLocation(300, 200);
+        System.out.println(c2);
+        c2.setVisible(false);
+        surface.repaint();
+		
+		
+		
+		//Cable cable = new Cable();
+		//surface.getComponent(1).add(cable);
+		//surface.add(cable);
 	}
 }
