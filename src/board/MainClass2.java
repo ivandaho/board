@@ -2,11 +2,13 @@ package board;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,6 +41,12 @@ public class MainClass2 extends JFrame{
 	public static JPanel surface_menu;
 	public static JTable surface_table;
 
+
+    public static Point indyP;
+    public static Image indyImg = Toolkit.getDefaultToolkit().createImage("images/indy_normal.png");
+    public static Image indySH = Toolkit.getDefaultToolkit().createImage("images/indy_red.png");
+
+    
 	public static void main(String[] args) {
 		
 		///////////////////////////////////////////////////
@@ -105,12 +113,21 @@ String boardName = "PT_Mini";
 
 		});
 
+		JButton jbnTest2 = new JButton("test");
+		jbnTest2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent f) {
+				//testButton2Func();
+			}
+
+		});
+
 		surface_menu.add(jbnAddP_MXR, BorderLayout.CENTER);
 		surface_menu.add(jbnAddP_MXR_BEF, BorderLayout.CENTER);
 		surface_menu.add(jbnAddP_KORG_Pitchblack, BorderLayout.CENTER);
 		surface_menu.add(jbnAddP_SANSAMP_BDDI, BorderLayout.CENTER);
 		surface_menu.add(jbnRemoveP, BorderLayout.WEST);
-		//surface_menu.add(jbnTest, BorderLayout.WEST);
+		surface_menu.add(jbnTest, BorderLayout.WEST);
 
 		m.add(surface, BorderLayout.CENTER);
 		m.add(surface_menu, BorderLayout.SOUTH);
@@ -123,6 +140,7 @@ String boardName = "PT_Mini";
 
             public void run() {
                 loadPedals();
+                addIndicator();
                 setBoard();
             }
 
@@ -155,7 +173,7 @@ String boardName = "PT_Mini";
     public static void loadPedals() {
      //Generate names of files
         surface.removeAll();
-        for (int i = 2; i <= 2; i++) {
+        for (int i = 3; i <= 2; i++) {
         	Pedal.pedalID = i;
             String fileName = Pedal.pedalID + ".png"; //String.valueOf(i)
             addPedals(fileName);
@@ -193,7 +211,7 @@ String boardName = "PT_Mini";
         spawn.setImage(img);//Sets image
         spawn.setAutoSize(false);//The component get ratio w/h of source image
         spawn.setOverbearing(true);//On click ,this panel gains lowest z-buffer
-        //spawn.setBorder(new LineBorder(Color.black, 1));
+        //spawn.setBorder(new LineBorder(Color.black, 5));
 
         //A small randomization of object position
         int delta = surface.getWidth() / 4;
@@ -409,6 +427,7 @@ String boardName = "PT_Mini";
         spawn.setWidth(ix);
         spawn.setHeight(iy);
         spawn.setLocation(cx + getRandom(delta / 2) - spawn.getWidth() / 2, cy + getRandom(delta / 2) - spawn.getHeight() / 2);
+        spawn.setBorder(new LineBorder(Color.black, 1));
         System.out.println(spawn + ", spawned");
         System.out.println("######################");
         surface.repaint();
@@ -427,22 +446,40 @@ String boardName = "PT_Mini";
         int ix = (bgBoard.getWidth()*imagescale);
         int iy = (bgBoard.getHeight()*imagescale);
 
-        System.out.println(ix + "  " + iy);
         
         bgBoard.setSize(ix, iy); // this is needed for picture to appear. 
                                // setWidth and setHeight does not replace this
         bgBoard.setWidth(ix);
         bgBoard.setHeight(iy);
         bgBoard.setLocation(cx - bgBoard.getWidth()/2, cy - bgBoard.getHeight()/2);
-        System.out.println(bgBoard);
-        System.out.println(surface.getComponentCount());
         surface.repaint();
-
-            
-            
     }
+
+    private static void addIndicator() {
+        Indicator indy = new Indicator();
+        surface.add(indy);//Adds this component to main container
+        indy.setImage(indyImg);//Sets image
+        indy.setAutoSize(false);//The component get ratio w/h of source image
+
+        int cx = 50;
+        int cy = surface.getHeight() - 50;
+        int ix = (indy.getWidth());
+        int iy = (indy.getHeight());
+
+        
+        indy.setSize(ix, iy); // this is needed for picture to appear. 
+                               // setWidth and setHeight does not replace this
+        indy.setWidth(ix);
+        indy.setHeight(iy);
+        indyP = new Point(cx - indy.getWidth()/2, cy - indy.getHeight()/2);
+        indy.setLocation(indyP);
+        //System.out.println(indy);
+        //indy.somethingHappened();
+        surface.repaint();
+    }
+
     public static void removePedal() {
-    	if (surface.getComponentCount() > 1) {
+    	if (surface.getComponentCount() > 2) {
     	surface.remove(0);
     	//surface.remove(surface.getComponentCount()-2);
         surface.repaint();
@@ -453,7 +490,35 @@ String boardName = "PT_Mini";
         return r;
     }
     public static void testButtonFunc() {
-        System.out.println(surface.getComponents());
-        
+    	Component[] test = surface.getComponents();
+        detectProximity();
+    	for (int i=0; i<test.length-2; i++){
+
+            Point parentOnScreen = surface.getComponent(i).getParent().getLocation();
+            System.out.println(surface.getComponent(i) + ", loc = " + surface.getComponent(i).getLocation());
+            ((Indicator) surface.getComponentAt(indyP)).somethingHappened();
+    	} 
     }
+
+	public static void detectProximity() {
+		int currentX, currentY;
+		int compareToX, compareToY;
+
+		Pedal lastTouch = (Pedal) surface.getComponent(0);
+		currentX = (int) lastTouch.getLocation().getX() + lastTouch.getWidth();
+		currentY = (int) lastTouch.getLocation().getY();
+
+		Pedal compare = (Pedal) surface.getComponent(1);
+		compareToX = (int) compare.getLocation().getX();
+		compareToY = (int) compare.getLocation().getY();
+		
+		
+		int distanceX = currentX - compareToX;
+		int distanceY = currentY - compareToY;
+		int distance = (int) Math.abs(Math.sqrt(distanceX * distanceX + distanceY * distanceY));
+		System.out.println("distance between pedals is: " + distance);
+		
+		
+		//currentX = surface.getlocationI/();
+	}
 }

@@ -225,7 +225,7 @@ public abstract class Pedal extends DraggableImageThing{
 
     private int inJackCount = 1;
     
-    private double inJack_0_x = 0.945;
+    private double inJack_0_x = 0.985;
     private double inJack_0_y = .5;
     private String inJack_0_dir = "r";
     
@@ -289,7 +289,7 @@ public abstract class Pedal extends DraggableImageThing{
 
     private int outJackCount = 1;
     
-    private double outJack_0_x = 0.055;
+    private double outJack_0_x = 0.015;
     private double outJack_0_y = .5;
     private String outJack_0_dir = "l";
 
@@ -409,6 +409,9 @@ public abstract class Pedal extends DraggableImageThing{
 	public int getPedalID() {
 		return pedalID;
 	}
+	
+	
+	
     // public abstract stuff
 
 
