@@ -482,7 +482,7 @@ String boardName = "PT_Mini";
     }
 
     public static void removePedal() {
-    	if (surface.getComponentCount() > 2) {
+    	if (surface.getComponentCount() > 4) {
     	surface.remove(0);
     	//surface.remove(surface.getComponentCount()-2);
         surface.repaint();
