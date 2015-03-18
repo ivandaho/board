@@ -1,5 +1,7 @@
 package board;
 
+import java.awt.Point;
+
 public class Cable extends UndraggableImageThing{
 
 	private double w = 34; 
