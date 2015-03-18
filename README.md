@@ -23,3 +23,7 @@ the other for specific ordering.
 
 - **Create Your Own Custom Pedal** - Create your own custom pedal by specificing the dimensions, knobs, footswitches 
 and/or other features.
+
+**WIP Screenshot:**
+
+![current state](http://i.imgur.com/o33ZttA.png "Program WIP Screenshot")
