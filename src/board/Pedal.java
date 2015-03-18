@@ -8,6 +8,7 @@ public abstract class Pedal extends DraggableImageThing{
     static ArrayList<Pedal> pedalList = new ArrayList<Pedal>(20);
     ArrayList<Double> knobXs = new ArrayList<Double>(20);
 
+    private int x, y;
     private String base = "MXR_orange";
 	private double w = 100; 
     private double h = 100;
@@ -283,7 +284,7 @@ public abstract class Pedal extends DraggableImageThing{
 		inJack_0_y = v;
 	}
 
-	// outjack (incomplete)
+	// outjack 
 
 	private String outJackType = "1";
 
@@ -367,6 +368,8 @@ public abstract class Pedal extends DraggableImageThing{
     // constructors and other stuff
     public Pedal(){
     	this.PedalType = "MXR";
+    	x = (int) MainClass2.surface.getComponent(0).getLocation().getX();
+    	y = (int) MainClass2.surface.getComponent(0).getLocation().getY();
     }
 
     public Pedal(String type){

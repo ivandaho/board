@@ -121,7 +121,7 @@ String boardName = "PT_Mini";
 		jbnTest2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent f) {
-				//testButton2Func();
+				testButton2Func();
 			}
 
 		});
@@ -132,6 +132,7 @@ String boardName = "PT_Mini";
 		surface_menu.add(jbnAddP_SANSAMP_BDDI, BorderLayout.CENTER);
 		surface_menu.add(jbnRemoveP, BorderLayout.WEST);
 		surface_menu.add(jbnTest, BorderLayout.WEST);
+		surface_menu.add(jbnTest2, BorderLayout.WEST);
 
 		m.add(surface, BorderLayout.CENTER);
 		m.add(surface_menu, BorderLayout.SOUTH);
@@ -146,7 +147,7 @@ String boardName = "PT_Mini";
                 loadPedals();
                 addIndicator();
                 setBoard();
-                attachCable();
+                //attachCable();
             }
 
         });
@@ -435,6 +436,7 @@ String boardName = "PT_Mini";
         //spawn.setBorder(new LineBorder(Color.black, 1));
         System.out.println(spawn + ", spawned");
         System.out.println("######################");
+        checkEvents();
         surface.repaint();
     }
     
@@ -495,7 +497,9 @@ String boardName = "PT_Mini";
     public static void testButtonFunc() {
     	//attachCable();
     	for (int i = 0; i < surface.getComponentCount(); i++) {
-    	System.out.println(surface.getComponent(i));
+    	System.out.print(i);
+    	System.out.print("   " + surface.getComponent(i));
+    	System.out.println();
     	}
         //detectProximity();
     	/*for (int i=0; i<test.length-2; i++){
@@ -505,7 +509,16 @@ String boardName = "PT_Mini";
             ((Indicator) surface.getComponentAt(indyP)).somethingHappened();
     	}  */
     }
-
+    
+    public static void testButton2Func() {
+        System.out.println(Pedal.pedalList.size());
+    	for (int i = 0; i <Pedal.pedalList.size(); i++) {
+    		System.out.println(Pedal.pedalList.get(i));
+            System.out.println(Pedal.pedalList.get(i).getX());
+    	}
+    }
+    
+/*
 	public static void detectProximity() {
 		if (surface.getComponentCount() > 2) {
                 
@@ -552,6 +565,13 @@ String boardName = "PT_Mini";
 		
 		//currentX = surface.getlocationI/();
 	}
+	*/
+    public static void checkEvents() {
+    	if (surface.getComponentCount() >= 2 + 2) {
+            attachCable();
+            System.out.println("over 4 elements, attached 2 cable joints (1 set)");
+    	}
+    }
 	
 	public static void attachCable() {
         Image img_cable = Toolkit.getDefaultToolkit().createImage("images/cables/l_1.png");
