@@ -11,7 +11,10 @@ public class Cable extends UndraggableImageThing{
     private int to = 0;
 
     public Cable(){
-    	from = Pedal.pedalList.size();
+    	int OldestPedal = Pedal.pedalList.size()-1;
+    	int NewestPedal = Pedal.pedalList.size()-2;
+    	from = OldestPedal;
+    	to = NewestPedal;
     }
 
 	public int getWidth() {
@@ -53,6 +56,8 @@ public class Cable extends UndraggableImageThing{
                 
             int currentX, currentY;
             int compareToX, compareToY;
+            
+            int draggingP, draggingFrom;
 
             Pedal lastTouch = (Pedal) surface.getComponent(0);
             currentX = (int) lastTouch.getLocation().getX() + lastTouch.getWidth();
@@ -67,6 +72,14 @@ public class Cable extends UndraggableImageThing{
             int distanceY = currentY - compareToY;
             int distance = (int) Math.abs(Math.sqrt(distanceX * distanceX + distanceY * distanceY));
             
+            //Pedal lt = (Pedal)I/
+            int dX, cX, oX;
+            
+            //for(Point nextP:Pedal.inPoints) {
+            //	dX =nextP.getX();
+            //}
+            //dX = 
+            
             if (distance < 83 && distance > 67) {
                 ((Indicator) surface.getComponentAt(MainClass2.indyP)).somethingHappened();
 
@@ -74,24 +87,32 @@ public class Cable extends UndraggableImageThing{
                 int getLocX = (int) compare.getLocation().getX();
                 int getLocY = (int) compare.getLocation().getY();
                 MainClass2.newP = new Point (getLocX - 34, getLocY + compare.getHeight()/2 - 79); 
-                surface.getComponent(surface.getComponentCount()-4).setLocation(MainClass2.newP);
-                surface.getComponent(surface.getComponentCount()-4).setVisible(true);
+                
+                draggingP = Pedal.pedalList.size();
+                draggingFrom = Pedal.pedalList.size()+1;
+                surface.getComponent(draggingP).setLocation(MainClass2.newP); // last 4th element
+                surface.getComponent(draggingP).setVisible(true);
 
                 int getLocX2 = (int) lastTouch.getLocation().getX() + lastTouch.getWidth();
                 int getLocY2 = (int) lastTouch.getLocation().getY();
                 MainClass2.newP = new Point (getLocX2, getLocY2 + lastTouch.getHeight()/2 - 79); 
-                surface.getComponent(surface.getComponentCount()-3).setLocation(MainClass2.newP);
-                surface.getComponent(surface.getComponentCount()-3).setVisible(true);
+                surface.getComponent(draggingFrom).setLocation(MainClass2.newP); // last 4th element
+                surface.getComponent(draggingFrom).setVisible(true);
             }
             else {
                 ((Indicator) surface.getComponentAt(MainClass2.indyP)).nothingToSee();
                 //System.out.println("distance between pedals is: " + distance);
-                surface.getComponent(surface.getComponentCount()-4).setVisible(false);
-                surface.getComponent(surface.getComponentCount()-3).setVisible(false);
+                surface.getComponent(Pedal.pedalList.size()).setVisible(false);
+                surface.getComponent(Pedal.pedalList.size()+1).setVisible(false);
             }
         }
 		
 		
+		
 		//currentX = surface.getlocationI/();
 	}
+    public static void updateJacks(Surface surface, int p){
+
+        
+    }
 }

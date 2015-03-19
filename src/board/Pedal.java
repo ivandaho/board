@@ -1,12 +1,14 @@
 package board;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 public abstract class Pedal extends DraggableImageThing{
 	private String PedalType = "default";
 	public static int pedalID = 0;
     static ArrayList<Pedal> pedalList = new ArrayList<Pedal>(20);
-    ArrayList<Double> knobXs = new ArrayList<Double>(20);
+    static ArrayList<Point> inPoints = new ArrayList<Point> (50);
+    static ArrayList<Point> outPoints = new ArrayList<Point> (50);
 
     private int x, y;
     private String base = "MXR_orange";
@@ -283,6 +285,10 @@ public abstract class Pedal extends DraggableImageThing{
 	public void setInJack_0_y(double v) {
 		inJack_0_y = v;
 	}
+	
+	public void createInPoint(Point p) {
+		inPoints.add(p);
+	}
 
 	// outjack 
 
@@ -365,6 +371,9 @@ public abstract class Pedal extends DraggableImageThing{
 		outJack_1_y = v;
 	}
 	
+	public void createOutPoint(Point p) {
+		outPoints.add(p);
+	}
     // constructors and other stuff
     public Pedal(){
     	this.PedalType = "MXR";

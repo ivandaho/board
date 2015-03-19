@@ -514,7 +514,13 @@ String boardName = "PT_Mini";
         System.out.println(Pedal.pedalList.size());
     	for (int i = 0; i <Pedal.pedalList.size(); i++) {
     		System.out.println(Pedal.pedalList.get(i));
-            System.out.println(Pedal.pedalList.get(i).getX());
+            //System.out.println(Pedal.pedalList.get(i).getX());
+            System.out.println();
+
+            System.out.print(Pedal.inPoints.get(i));
+            System.out.println();
+            System.out.print(Pedal.outPoints.get(i));
+            System.out.println();
     	}
     }
     

@@ -1,5 +1,7 @@
 package board;
 
+import java.awt.Point;
+
 public class Pedal_MXR extends Pedal {
 	
 
@@ -11,6 +13,10 @@ public class Pedal_MXR extends Pedal {
         setHeight(111);
         
         setKnobType("4");
+        Point ip = new Point(5, 5);
+        Point op = new Point(1, 1);
+        createInPoint(ip);
+        createOutPoint(op);
         
 
         // setInPos();
