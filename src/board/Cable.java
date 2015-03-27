@@ -79,31 +79,36 @@ public class Cable extends UndraggableImageThing{
             //	dX =nextP.getX();
             //}
             //dX = 
+            draggingP = Pedal.pedalList.size(); // if pedalList size is 2, the location of elements index 2 and 2+1 will be changed
+                                                // the Z value of pedals will be brought to front whenever it is dragged
+                                                //
+            draggingFrom = Pedal.pedalList.size()+1; // change this to be more dynamic, maybe the closest pedal towards
+                                                     // the right.
             
             if (distance < 83 && distance > 67) {
                 ((Indicator) surface.getComponentAt(MainClass2.indyP)).somethingHappened();
 
                 //cableStart = compare.getLocation();
+                
                 int getLocX = (int) compare.getLocation().getX();
                 int getLocY = (int) compare.getLocation().getY();
                 MainClass2.newP = new Point (getLocX - 34, getLocY + compare.getHeight()/2 - 79); 
-                
-                draggingP = Pedal.pedalList.size();
-                draggingFrom = Pedal.pedalList.size()+1;
-                surface.getComponent(draggingP).setLocation(MainClass2.newP); // last 4th element
+                surface.getComponent(draggingP).setLocation(MainClass2.newP); // change location of 4th
                 surface.getComponent(draggingP).setVisible(true);
 
+                
                 int getLocX2 = (int) lastTouch.getLocation().getX() + lastTouch.getWidth();
                 int getLocY2 = (int) lastTouch.getLocation().getY();
                 MainClass2.newP = new Point (getLocX2, getLocY2 + lastTouch.getHeight()/2 - 79); 
-                surface.getComponent(draggingFrom).setLocation(MainClass2.newP); // last 4th element
+                surface.getComponent(draggingFrom).setLocation(MainClass2.newP); 
                 surface.getComponent(draggingFrom).setVisible(true);
+                
             }
             else {
                 ((Indicator) surface.getComponentAt(MainClass2.indyP)).nothingToSee();
                 //System.out.println("distance between pedals is: " + distance);
-                surface.getComponent(Pedal.pedalList.size()).setVisible(false);
-                surface.getComponent(Pedal.pedalList.size()+1).setVisible(false);
+                surface.getComponent(draggingP).setVisible(false);
+                surface.getComponent(draggingFrom).setVisible(false);
             }
         }
 		

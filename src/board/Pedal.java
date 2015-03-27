@@ -251,7 +251,15 @@ public abstract class Pedal extends DraggableImageThing{
 	public int getInJackCount() {
 		return inJackCount;
 	}
-	
+	/**
+	 * returns the x value of a Pedal's input jack center 
+	 * position.
+	 * 
+	 * 
+	 * @param thisPedal the Pedal to get the input jack number 
+	 * @param i	the input jack number, starting from 0.
+	 * @return the x value of that specific input jack's center.
+	 */
 	public static double getInJack_x(int thisPedal, int i) {
 		switch (i) {
 		case 1:
