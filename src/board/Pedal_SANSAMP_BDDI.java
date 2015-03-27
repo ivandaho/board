@@ -1,5 +1,7 @@
 package board;
 
+import java.awt.Point;
+
 public class Pedal_SANSAMP_BDDI extends Pedal{
 
 	public Pedal_SANSAMP_BDDI(){
@@ -47,6 +49,8 @@ public class Pedal_SANSAMP_BDDI extends Pedal{
         setOutJack_1_x(.9805);
         setOutJack_1_y(.6);
         
+        createInPoint(new Point(5, 5));
+        createOutPoint(new Point(1, 1));
 
         // setInPos();
         // setOutPos();

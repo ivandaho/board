@@ -1,5 +1,7 @@
 package board;
 
+import java.awt.Point;
+
 public class Pedal_KORG_Pitchblack extends Pedal{
 
 	public Pedal_KORG_Pitchblack(){
@@ -12,6 +14,8 @@ public class Pedal_KORG_Pitchblack extends Pedal{
         setKnobCount(0);
         setFs_0_y(.8);
         
+        createInPoint(new Point(5, 5));
+        createOutPoint(new Point(1, 1));
 
         // setInPos();
         // setOutPos();

@@ -231,6 +231,12 @@ public abstract class Pedal extends DraggableImageThing{
     private double inJack_0_x = 0.985;
     private double inJack_0_y = .5;
     private String inJack_0_dir = "r";
+
+    //private double inJack_1_x = 0.985;  not needed yet
+    //private double inJack_1_y = .5;
+    //private String inJack_1_dir = "r";
+
+
     
 	public void setInJackType(String t) {
 		inJackType = t;
@@ -344,10 +350,12 @@ public abstract class Pedal extends DraggableImageThing{
 	public static String getOutJackDir(int thisPedal, int i) {
 		switch (i) {
 		case 1:
-
 			return Pedal.pedalList.get(thisPedal).outJack_0_dir;
-			default:
-				return "r";
+		case 2:
+			return Pedal.pedalList.get(thisPedal).outJack_1_dir;
+
+        default:
+            return "r";
 		}
 	}
 	public double getOutJack_0_x() {

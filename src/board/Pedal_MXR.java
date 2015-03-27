@@ -13,10 +13,9 @@ public class Pedal_MXR extends Pedal {
         setHeight(111);
         
         setKnobType("4");
-        Point ip = new Point(5, 5);
-        Point op = new Point(1, 1);
-        createInPoint(ip);
-        createOutPoint(op);
+
+        createInPoint(new Point(5, 5));
+        createOutPoint(new Point(1, 1));
         
 
         // setInPos();

@@ -511,7 +511,7 @@ String boardName = "PT_Mini";
     }
     
     public static void testButton2Func() {
-        System.out.println(Pedal.pedalList.size());
+        System.out.println("PedalList size: " + Pedal.pedalList.size());
     	for (int i = 0; i <Pedal.pedalList.size(); i++) {
     		System.out.println(Pedal.pedalList.get(i));
             //System.out.println(Pedal.pedalList.get(i).getX());
@@ -522,6 +522,7 @@ String boardName = "PT_Mini";
             System.out.print(Pedal.outPoints.get(i));
             System.out.println();
     	}
+            System.out.println("###########################");
     }
     
 /*
