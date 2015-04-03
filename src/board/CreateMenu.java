@@ -18,15 +18,18 @@ import javax.swing.JTextField;
 
 public class CreateMenu extends JFrame{
 
+	public static JComboBox optionBase;
 	public CreateMenu(String string) {
 		setTitle(string);
 	}
 	
 	public static void sdfds() {
-        JComboBox optionBase = new JComboBox();
+        optionBase = new JComboBox();
         optionBase.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+		        System.out.println(optionBase.getSelectedIndex());
+		            System.out.println(((JComboBox) e.getSource()).getSelectedItem());
 
                 }
         });

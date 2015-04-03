@@ -31,6 +31,7 @@ import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 
 public class MainClass2 extends JFrame{
+	public static boolean custom = false;
 	
 	public static int imagescale = 2;
 	//public static JFrame frame;
@@ -261,10 +262,18 @@ String boardName = "PT_Mini";
     }
 	////////////////////////////////////////////////////////////////
 
+    public static void addNewCustomPedal(int t) {
+    	custom = true;
+    	addNewPedal(t);
+    }
     public static void addNewPedal(int t) {
 
         Pedal spawn = null ;
     	Pedal.pedalID = t;
+    	if (custom = true){
+    		Pedal.pedalID = CreateMenu.optionBase.getSelectedIndex() + 1;
+    	}
+    	// drop down menu -> base shape
 
     	boolean testbuilder = true;
     	if (Pedal.pedalID == 1) {
