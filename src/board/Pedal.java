@@ -4,6 +4,14 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 public abstract class Pedal extends DraggableImageThing{
+	
+	public static String[] bases = new String[20];
+	public static void popBases() {
+	bases[0] = "MXR";
+	bases[1] = "BOSS";
+	bases[2] = "SansAmp";
+	}
+
 	private String PedalType = "default";
 	public static int pedalID = 0;
     static ArrayList<Pedal> pedalList = new ArrayList<Pedal>(20);

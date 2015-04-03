@@ -41,6 +41,8 @@ public class MainClass2 extends JFrame{
 	public static JPanel surface_menu;
 	public static JTable surface_table;
 
+	public static JFrame cm;
+
 
     public static Point indyP;
     public static Image indyImg = Toolkit.getDefaultToolkit().createImage("images/indy_normal.png");
@@ -126,6 +128,25 @@ String boardName = "PT_Mini";
 
 		});
 
+		JButton jbnSpawn = new JButton("spawn chooser");
+		jbnSpawn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent f) {
+				spawnBtnFunc();
+			}
+
+		});
+		
+
+		cm = new CreateMenu("Spawn Pedal");
+		cm.setSize(300, 500);
+		cm.setVisible(false);
+		cm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		
+		//cm.sdfds();
+		
+		//cm.addWindowListener(
+
 		surface_menu.add(jbnAddP_MXR, BorderLayout.CENTER);
 		surface_menu.add(jbnAddP_MXR_BEF, BorderLayout.CENTER);
 		surface_menu.add(jbnAddP_KORG_Pitchblack, BorderLayout.CENTER);
@@ -133,6 +154,7 @@ String boardName = "PT_Mini";
 		surface_menu.add(jbnRemoveP, BorderLayout.WEST);
 		surface_menu.add(jbnTest, BorderLayout.WEST);
 		surface_menu.add(jbnTest2, BorderLayout.WEST);
+		surface_menu.add(jbnSpawn, BorderLayout.WEST);
 
 		m.add(surface, BorderLayout.CENTER);
 		m.add(surface_menu, BorderLayout.SOUTH);
@@ -147,6 +169,8 @@ String boardName = "PT_Mini";
                 loadPedals();
                 addIndicator();
                 setBoard();
+                Pedal.popBases();
+                CreateMenu.sdfds();
                 //attachCable();
             }
 
@@ -617,5 +641,9 @@ String boardName = "PT_Mini";
 		//Cable cable = new Cable();
 		//surface.getComponent(1).add(cable);
 		//surface.add(cable);
+	}
+
+	public static void spawnBtnFunc(){
+		cm.setVisible(true);
 	}
 }
