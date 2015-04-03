@@ -7,9 +7,16 @@ public abstract class Pedal extends DraggableImageThing{
 	
 	public static String[] bases = new String[20];
 	public static void popBases() {
-	bases[0] = "MXR";
+	bases[0] = "MXR_Orange";
 	bases[1] = "BOSS";
-	bases[2] = "SansAmp";
+	bases[2] = "SANSAMP_BDDI";
+	}
+
+	public static int[] knobTypes = new int[20];
+	public static void popKnobTypes() {
+		for (int i = 0; i < 7; i++){
+			knobTypes[i] = i+0;
+		}
 	}
 
 	private String PedalType = "default";

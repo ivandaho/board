@@ -31,6 +31,8 @@ import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 
 public class MainClass2 extends JFrame{
+
+	public static boolean oimagedebug = false;
 	public static boolean custom = false;
 	
 	public static int imagescale = 2;
@@ -140,7 +142,7 @@ String boardName = "PT_Mini";
 		
 
 		cm = new CreateMenu("Spawn Pedal");
-		cm.setSize(300, 500);
+		cm.setSize(300, 200);
 		cm.setVisible(false);
 		cm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
@@ -171,6 +173,7 @@ String boardName = "PT_Mini";
                 addIndicator();
                 setBoard();
                 Pedal.popBases();
+                Pedal.popKnobTypes();
                 CreateMenu.sdfds();
                 //attachCable();
             }
@@ -269,13 +272,17 @@ String boardName = "PT_Mini";
     public static void addNewPedal(int t) {
 
         Pedal spawn = null ;
-    	Pedal.pedalID = t;
-    	if (custom = true){
-    		Pedal.pedalID = CreateMenu.optionBase.getSelectedIndex() + 1;
+    	Pedal.pedalID = t; // t is type.
+    	if (cm.isVisible()){ //TODO: streamline this. shouldnt be needed.
+    		custom = true;
     	}
+    	if (custom == true){
+    		System.out.println(custom);
+    	}
+    	else
+    		System.out.println("NOT TRUE. FALSE.");
     	// drop down menu -> base shape
 
-    	boolean testbuilder = true;
     	if (Pedal.pedalID == 1) {
             spawn = new Pedal_MXR();
             Pedal.pedalList.add(spawn);
@@ -290,6 +297,11 @@ String boardName = "PT_Mini";
         }
         else if (Pedal.pedalID == 9) {
         	spawn = new Pedal_SANSAMP_BDDI();
+        	Pedal.pedalList.add(spawn);
+        }
+        else if (Pedal.pedalID == 99) {
+        	spawn = new Pedal_Custom();
+        	System.out.println("CUSTOM PEDAL WOO");
         	Pedal.pedalList.add(spawn);
         }
 		surface.add(spawn, 0);
@@ -434,22 +446,18 @@ String boardName = "PT_Mini";
     	String fileName = (Pedal.pedalID + ".png");
     	Image img = Toolkit.getDefaultToolkit().createImage("images/"+fileName);
     	////////////////////////////////////////////////////////////
-    	if (testbuilder == true){
     	    spawn.setImage(output);
-            try {
-                File outf = new File ("oimage_.png");
-                ImageIO.write( output, "PNG", outf );
-            }
-            catch ( IOException x ) {
-                // Complain if there was any problem writing 
-                // the output file.
-                x.printStackTrace();
-            }
-           
-    	}
-    	else{
-            spawn.setImage(img);
-    	}
+    	    if(oimagedebug == true) {
+                try {
+                    File outf = new File ("oimage_.png");
+                    ImageIO.write( output, "PNG", outf );
+                }
+                catch ( IOException x ) {
+                    // Complain if there was any problem writing 
+                    // the output file.
+                    x.printStackTrace();
+                }
+    	    }
     	spawn.setAutoSize(false);
     	spawn.setOverbearing(true);
     	//spawn.setBorder(new LineBorder(Color.black, 1));
