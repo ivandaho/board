@@ -7,7 +7,7 @@ public class Pedal_Custom extends Pedal {
 	
 	public Pedal_Custom(){
 		super("custom");
-		setBase((String) CreateMenu.optionBase.getSelectedItem());
+		setBase((String) Pedal.bases[CreateMenu.optionBase.getSelectedIndex()]);
 		setPedalID(CreateMenu.optionBase.getSelectedIndex());
 
 		if (CreateMenu.optionWidth.getText().equals("")){
@@ -24,7 +24,8 @@ public class Pedal_Custom extends Pedal {
             setHeight(height);
 		}
 
-		String knobt = ((CreateMenu.optionKnobType.getSelectedItem().toString()));
+		Integer knobti = CreateMenu.optionKnobType.getSelectedIndex()+1;
+		String knobt =  knobti.toString();
 		setKnobType(knobt);
 
 		

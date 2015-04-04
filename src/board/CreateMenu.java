@@ -39,7 +39,7 @@ public class CreateMenu extends JFrame{
 
                 }
         });
-		for(String item:Pedal.bases) {
+		for(String item:Pedal.basesText) {
 			if (item != null){
                 optionBase.addItem(item);
 			}
@@ -73,13 +73,8 @@ public class CreateMenu extends JFrame{
         
         optionKnobType = new JComboBox();
 
-		for(String item:Pedal.bases) {
-			if (item != null){
-                optionBase.addItem(item);
-			}
-		}
-		for(int type:Pedal.knobTypes) {
-			if (type != 0) {
+		for(String type:Pedal.knobTypes) {
+			if (type != "0") {
                 optionKnobType.addItem(type);
 			}
 		}

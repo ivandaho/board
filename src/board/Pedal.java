@@ -12,11 +12,23 @@ public abstract class Pedal extends DraggableImageThing{
 	bases[2] = "SANSAMP_BDDI";
 	}
 
-	public static int[] knobTypes = new int[20];
+	public static String[] basesText = new String[20];
+	public static void popBasesText() {
+	basesText[0] = "MXR (defaults to orange atm)";
+	basesText[1] = "BOSS (not working atm)";
+	basesText[2] = "SANSAMP_BDDI (width not set)";
+	}
+
+	public static String[] knobTypes = new String[20];
 	public static void popKnobTypes() {
-		for (int i = 0; i < 5; i++){
-			knobTypes[i] = i;
-		}
+		knobTypes[0] = "big mxr new type(old)";
+		knobTypes[1] = "small mxr new type(bef)";
+		knobTypes[2] = "sansamp BDDI";
+		knobTypes[3] = "phase90 style";
+		knobTypes[4] = "big phase90 style";
+		//for (int i = 0; i < 5; i++){
+		//	knobTypes[i] = i;
+		//}
 	}
 
 	private String PedalType = "default";

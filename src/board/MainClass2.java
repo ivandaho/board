@@ -173,6 +173,7 @@ String boardName = "PT_Mini";
                 addIndicator();
                 setBoard();
                 Pedal.popBases();
+                Pedal.popBasesText();
                 Pedal.popKnobTypes();
                 CreateMenu.sdfds();
                 //attachCable();
