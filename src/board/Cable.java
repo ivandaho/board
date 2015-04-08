@@ -112,12 +112,23 @@ public class Cable extends UndraggableImageThing{
             }
         }
 		
+	/*each pedal has 2 zones that check for
+	 *proximity for other pedals' hot zones
+	 *
+	 *after they detect, draw a cable (with
+	 *correct facing direction) connected 
+	 *to each side
+	 *
+	 *if they are too far
+	 *apart, hide them
+*/	
 		
 		
 		//currentX = surface.getlocationI/();
 	}
-    public static void updateJacks(Surface surface, int p){
+    public static void updatePointArray(Surface surface, int pindex){
+    	Pedal.inPoints.set(pindex,(surface.getComponent(pindex).getLocationOnScreen()));
 
-        
+           
     }
 }

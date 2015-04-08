@@ -28,6 +28,10 @@ public class Pedal_Custom extends Pedal {
 		String knobt =  knobti.toString();
 		setKnobType(knobt);
 
+		int KnobCount = (int) CreateMenu.optionKnobNumber.getSelectedItem();
+		setKnobCount(KnobCount);
+
+
 		
         createInPoint(new Point(5, 5));
         createOutPoint(new Point(1, 1));

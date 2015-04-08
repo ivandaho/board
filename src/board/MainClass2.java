@@ -139,9 +139,17 @@ String boardName = "PT_Mini";
 			}
 
 		});
+		JButton jbnTest3 = new JButton("tb3");
+		jbnTest3.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent f) {
+				tbf3();
+			}
+
+		});
 		
 
-		cm = new CreateMenu("Spawn Pedal");
+		cm = new CreateMenu("Spawn Custom Pedal");
 		cm.setSize(300, 200);
 		cm.setVisible(false);
 		cm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -157,7 +165,8 @@ String boardName = "PT_Mini";
 		surface_menu.add(jbnRemoveP, BorderLayout.WEST);
 		surface_menu.add(jbnTest, BorderLayout.WEST);
 		surface_menu.add(jbnTest2, BorderLayout.WEST);
-		surface_menu.add(jbnSpawn, BorderLayout.WEST);
+		//surface_menu.add(jbnSpawn, BorderLayout.WEST);
+		surface_menu.add(jbnTest3, BorderLayout.WEST);
 
 		m.add(surface, BorderLayout.CENTER);
 		m.add(surface_menu, BorderLayout.SOUTH);
@@ -663,5 +672,15 @@ String boardName = "PT_Mini";
 
 	public static void spawnBtnFunc(){
 		cm.setVisible(true);
+	}
+	
+	public static void addCablePoints(){
+		Pedal.inPoints.add(new Point(10,10));
+	}
+	
+	public static void tbf3(){
+		Cable.updatePointArray((Surface)MainClass2.surface, 0);
+		System.out.println(Pedal.inPoints);
+		
 	}
 }

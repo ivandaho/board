@@ -14,8 +14,10 @@ public class Pedal_MXR extends Pedal {
         
         setKnobType("4");
 
-        createInPoint(new Point(5, 5));
-        createOutPoint(new Point(1, 1));
+        int locX = (int) this.getLocation().getX();
+        int locY = (int) this.getLocation().getY();
+        createInPoint(new Point(locX, locY + this.getHeight()/2 - 79));
+        createOutPoint(new Point(locX - 34, locY + this.getHeight()/2 -79));
         
 
         // setInPos();

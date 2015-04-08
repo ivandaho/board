@@ -22,6 +22,7 @@ public class CreateMenu extends JFrame{
 	public static JTextField optionHeight;
 	public static JButton testButton;
 	public static JComboBox optionKnobType;
+	public static JComboBox optionKnobNumber;
 
 	public CreateMenu(String string) {
 		setTitle(string);
@@ -74,18 +75,33 @@ public class CreateMenu extends JFrame{
         optionKnobType = new JComboBox();
 
 		for(String type:Pedal.knobTypes) {
-			if (type != "0") {
+			if (type != "0" && type != null) {
                 optionKnobType.addItem(type);
 			}
 		}
+
+        optionKnobNumber = new JComboBox();
+        optionKnobNumber.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+		        System.out.println(optionKnobNumber.getSelectedItem());
+                }
+        });
+
+		for(int i = 1; i<=5;i++){
+                optionKnobNumber.addItem(i);
+		}
+
+        
+        
         MainClass2.cm.setLayout(new GridLayout(0, 1));
         MainClass2.cm.add(optionBase);
         MainClass2.cm.add(optionWidth);
         MainClass2.cm.add(optionHeight);
-        MainClass2.cm.add(testButton);
         MainClass2.cm.add(optionKnobType);
+        MainClass2.cm.add(optionKnobNumber);
+        MainClass2.cm.add(testButton);
 
 	
 	}
-	
 }

@@ -85,6 +85,7 @@ public class DraggableThing extends JComponent {
 
                 if(MainClass2.surface.getComponentCount() > 5) {
                     Cable.detectProximity((Surface) MainClass2.surface);
+                    //Cable.updatePointArray((Surface) MainClass2.surface);
                 }
                 //Change Z-Buffer if it is "overbearing"
                 if (overbearing) {
