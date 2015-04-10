@@ -4,6 +4,15 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 public abstract class Pedal extends DraggableImageThing{
+
+	public Point inP = new Point((int)this.getLocation().getX(),
+			(int)this.getLocation().getY() + this.getHeight()/2 - 79); 
+	
+	//eventually have individual locations for the cable sockets for
+	//each individual pedal type
+	
+	public Point outP = new Point((int)this.getLocation().getX() - 34,
+			(int)this.getLocation().getY() + this.getHeight()/2 - 79);
 	
 	public static String[] bases = new String[20];
 	public static void popBases() {
@@ -330,6 +339,12 @@ public abstract class Pedal extends DraggableImageThing{
 	public void createInPoint(Point p) {
 		inPoints.add(p);
 	}
+	public void setInPoint(Point p){
+		inP = p;
+	}
+	public Point getInPoint(){
+		return inP;
+	}
 
 	// outjack 
 
@@ -416,6 +431,12 @@ public abstract class Pedal extends DraggableImageThing{
 	
 	public void createOutPoint(Point p) {
 		outPoints.add(p);
+	}
+	public void setOutPoint(Point p){
+		outP = p;
+	}
+	public Point getOutPoint(){
+		return outP;
 	}
     // constructors and other stuff
     public Pedal(){
