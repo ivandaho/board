@@ -4,6 +4,10 @@ import java.awt.Point;
 
 public class Pedal_MXR extends Pedal {
 	
+	public Point inP = new Point((int)this.getLocation().getX(),
+			(int)this.getLocation().getY() + this.getHeight()/2 - 79);
+	public Point outP = new Point((int)this.getLocation().getX() - 34,
+			(int)this.getLocation().getY() + this.getHeight()/2 - 79);
 
 	public Pedal_MXR(){
 		super("MXR");

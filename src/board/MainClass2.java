@@ -679,8 +679,8 @@ String boardName = "PT_Mini";
 	}
 	
 	public static void tbf3(){
-		Cable.updatePointArray((Surface)MainClass2.surface, 0);
-		System.out.println(Pedal.inPoints);
-		
+		for(int i = 0; i<Pedal.pedalList.size(); i++){
+			System.out.println(Pedal.pedalList.get(i).inP);
+		}
 	}
 }

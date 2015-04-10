@@ -29,6 +29,7 @@ import javax.swing.JComponent;
 
 public class DraggableThing extends JComponent {
 
+	static Point clickP;
     /** If sets <b>TRUE</b> this component is draggable */
     private boolean draggable = true;
     /** 2D Point representing the coordinate where mouse is, relative parent container */
@@ -82,9 +83,11 @@ public class DraggableThing extends JComponent {
                 Point mouseOnScreen = e.getLocationOnScreen();
                 Point position = new Point(mouseOnScreen.x - parentOnScreen.x - anchorX, mouseOnScreen.y - parentOnScreen.y - anchorY);
                 setLocation(position);
+                clickP = position;
 
                 if(MainClass2.surface.getComponentCount() > 5) {
-                    Cable.detectProximity((Surface) MainClass2.surface);
+                    Cable.updatePoint();
+                    //Cable.detectProximity((Surface) MainClass2.surface);
                     //Cable.updatePointArray((Surface) MainClass2.surface);
                 }
                 //Change Z-Buffer if it is "overbearing"
