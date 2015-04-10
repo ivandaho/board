@@ -130,12 +130,42 @@ public class Cable extends UndraggableImageThing{
     	Pedal.inPoints.set(touchedp,(surface.getComponent(touchedp).getLocationOnScreen()));
     }
     public static void updatePoint(){
-    	//Pedal.pedalList.get(p).setInPoint(new Point(5,5));
-    	//MainClass2.surface.getComponentAt(DraggableThing.clickP);
     	Pedal selectedPedal = (Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP);
     	((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)).setInPoint
-    		(new Point((int)selectedPedal.getLocation().getX(),
+    		(new Point((int)selectedPedal.getLocation().getX() - 34,
     				   (int)selectedPedal.getLocation().getY() + selectedPedal.getHeight()/2 - 79));
 
+    	((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)).setOutPoint
+    		(new Point((int)selectedPedal.getLocation().getX() + selectedPedal.getWidth(),
+    				   (int)selectedPedal.getLocation().getY() + selectedPedal.getHeight()/2 - 79));
+
+    }
+    public static void printProximity(){
+    	//Pedal selectedPedal = (Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP);
+    	for(int i = 0; i<Pedal.pedalList.size(); i++){
+    		 // for eac element in the pedallist....
+    		if (!(((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)) == Pedal.pedalList.get(i))){
+    			// if its not itself
+                if(((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)).inP.distance(Pedal.pedalList.get(i).outP) < 50){ 
+                	// check distance
+                	System.out.println("dragging inP close to " + i + " outP");
+                }
+                if(((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)).outP.distance(Pedal.pedalList.get(i).inP) < 50){ 
+                	// check distance
+                	System.out.println("dragging outP close to " + i + " inP");
+                }
+    		}
+    	}
+    }
+    
+    public static void putCable(){
+    	Pedal selectedPedal = (Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP);
+    	MainClass2.surface.getComponent(2).setLocation(
+    		(new Point((int)selectedPedal.getLocation().getX() - 34,
+    				   (int)selectedPedal.getLocation().getY() + selectedPedal.getHeight()/2 - 79)));
+
+    	MainClass2.surface.getComponent(3).setLocation(
+    		(new Point((int)selectedPedal.getLocation().getX() + selectedPedal.getWidth(),
+    				   (int)selectedPedal.getLocation().getY() + selectedPedal.getHeight()/2 - 79)));
     }
 }

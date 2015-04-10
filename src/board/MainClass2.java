@@ -143,7 +143,7 @@ String boardName = "PT_Mini";
 		jbnTest3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent f) {
-				tbf3();
+				tbf4();
 			}
 
 		});
@@ -644,7 +644,7 @@ String boardName = "PT_Mini";
         c.setHeight(iy);
         c.setLocation(200, 200);
         System.out.println(c);
-        c.setVisible(false);
+        c.setVisible(true);
         surface.repaint();
 		
 		
@@ -660,7 +660,7 @@ String boardName = "PT_Mini";
         c2.setHeight(iy2);
         c2.setLocation(300, 200);
         System.out.println(c2);
-        c2.setVisible(false);
+        c2.setVisible(true);
         surface.repaint();
 		
 		
@@ -678,9 +678,13 @@ String boardName = "PT_Mini";
 		Pedal.inPoints.add(new Point(10,10));
 	}
 	
+	public static void tbf4(){
+		//Cable.checkProximity();
+	}
 	public static void tbf3(){
 		for(int i = 0; i<Pedal.pedalList.size(); i++){
 			System.out.println(Pedal.pedalList.get(i).inP);
+			System.out.println(Pedal.pedalList.get(i).outP);
 		}
 	}
 }
