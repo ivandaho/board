@@ -251,7 +251,7 @@ String boardName = "PT_Mini";
         	spawn = new Pedal_MXR();
         	Pedal.pedalList.add(spawn);
         }
-        surface.add(spawn);//Adds this component to main container
+        surface.add(spawn, 0);//Adds this component to main container
         spawn.setImage(img);//Sets image
         spawn.setAutoSize(false);//The component get ratio w/h of source image
         spawn.setOverbearing(true);//On click ,this panel gains lowest z-buffer
@@ -674,11 +674,9 @@ String boardName = "PT_Mini";
 		cm.setVisible(true);
 	}
 	
-	public static void addCablePoints(){
-		Pedal.inPoints.add(new Point(10,10));
-	}
 	
 	public static void tbf4(){
+		Cable.putCable();
 		//Cable.checkProximity();
 	}
 	public static void tbf3(){
