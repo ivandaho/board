@@ -165,8 +165,8 @@ String boardName = "PT_Mini";
 		surface_menu.add(jbnRemoveP, BorderLayout.WEST);
 		surface_menu.add(jbnTest, BorderLayout.WEST);
 		surface_menu.add(jbnTest2, BorderLayout.WEST);
-		//surface_menu.add(jbnSpawn, BorderLayout.WEST);
-		surface_menu.add(jbnTest3, BorderLayout.WEST);
+		surface_menu.add(jbnSpawn, BorderLayout.WEST);
+		//surface_menu.add(jbnTest3, BorderLayout.WEST);
 
 		m.add(surface, BorderLayout.CENTER);
 		m.add(surface_menu, BorderLayout.SOUTH);
@@ -218,8 +218,8 @@ String boardName = "PT_Mini";
      //Generate names of files
         surface.removeAll();
         for (int i = 3; i <= 2; i++) {
-        	Pedal.pedalID = i;
-            String fileName = Pedal.pedalID + ".png"; //String.valueOf(i)
+        	//Pedal.pedalID = i;
+            String fileName = i + ".png"; //String.valueOf(i)
             addPedals(fileName);
         }
         surface.repaint();
@@ -231,23 +231,23 @@ String boardName = "PT_Mini";
         
         //Creates a draggableImageComponent and adds loaded image
         Pedal spawn = null ;
-        if (Pedal.pedalID == 1) {
+        if (spawn.pedalID == 1) {
             spawn = new Pedal_MXR();
             Pedal.pedalList.add(spawn);
         }
-        else if (Pedal.pedalID == 2) {
+        else if (spawn.pedalID == 2) {
             spawn = new Pedal_BOSS();
             Pedal.pedalList.add(spawn);
         }
-        else if (Pedal.pedalID == 3) {
+        else if (spawn.pedalID == 3) {
         	spawn = new Pedal_MXR_BEF();
         	Pedal.pedalList.add(spawn);
         }
-        else if (Pedal.pedalID == 4) {
+        else if (spawn.pedalID == 4) {
         	spawn = new Pedal_MXR();
         	Pedal.pedalList.add(spawn);
         }
-        else if (Pedal.pedalID == 5) {
+        else if (spawn.pedalID == 5) {
         	spawn = new Pedal_MXR();
         	Pedal.pedalList.add(spawn);
         }
@@ -282,7 +282,7 @@ String boardName = "PT_Mini";
     public static void addNewPedal(int t) {
 
         Pedal spawn = null ;
-    	Pedal.pedalID = t; // t is type.
+    	//spawn.pedalID = t; // t is type.
     	if (cm.isVisible()){ //TODO: streamline this. shouldnt be needed.
     		custom = true;
     	}
@@ -293,23 +293,23 @@ String boardName = "PT_Mini";
     		System.out.println("NOT TRUE. FALSE.");
     	// drop down menu -> base shape
 
-    	if (Pedal.pedalID == 1) {
+    	if (t == 1) {
             spawn = new Pedal_MXR();
             Pedal.pedalList.add(spawn);
         }
-        else if (Pedal.pedalID == 3) {
+        else if (t == 3) {
         	spawn = new Pedal_MXR_BEF();
         	Pedal.pedalList.add(spawn);
         }
-        else if (Pedal.pedalID == 4) {
+        else if (t == 4) {
         	spawn = new Pedal_KORG_Pitchblack();
         	Pedal.pedalList.add(spawn);
         }
-        else if (Pedal.pedalID == 9) {
+        else if (t == 9) {
         	spawn = new Pedal_SANSAMP_BDDI();
         	Pedal.pedalList.add(spawn);
         }
-        else if (Pedal.pedalID == 99) {
+        else if (t == 99) {
         	spawn = new Pedal_Custom();
         	System.out.println("CUSTOM PEDAL WOO");
         	Pedal.pedalList.add(spawn);
@@ -453,7 +453,7 @@ String boardName = "PT_Mini";
             }
         }
         ////////////////////////////////////////////////////////////
-    	String fileName = (Pedal.pedalID + ".png");
+    	String fileName = (spawn.pedalID + ".png");
     	Image img = Toolkit.getDefaultToolkit().createImage("images/"+fileName);
     	////////////////////////////////////////////////////////////
     	    spawn.setImage(output);
@@ -488,6 +488,17 @@ String boardName = "PT_Mini";
         System.out.println(spawn + ", spawned");
         System.out.println("######################");
         checkEvents();
+        
+        //this doesn't work
+    	spawn.setOutPoint
+        			(new Point(cx + getRandom(delta / 2) - spawn.getWidth() / 2 - 34, cy + getRandom(delta / 2) - spawn.getHeight() / 2 + spawn.getHeight()/2 - 79));
+    		//(new Point((int)spawn.getLocation().getX() - 34,
+    				   //(int)spawn.getLocation().getY() + spawn.getHeight()/2 - 79));
+
+    	spawn.setInPoint
+        			(new Point(cx + getRandom(delta / 2) - spawn.getWidth() / 2 + spawn.getWidth(), cy + getRandom(delta / 2) - spawn.getHeight() / 2 + spawn.getHeight()/2 - 79));
+    		//(new Point((int)spawn.getLocation().getX() + spawn.getWidth(),
+    				   //(int)spawn.getLocation().getY() + spawn.getHeight()/2 - 79));
         surface.repaint();
     }
     
@@ -644,7 +655,7 @@ String boardName = "PT_Mini";
         c.setHeight(iy);
         c.setLocation(200, 200);
         System.out.println(c);
-        c.setVisible(true);
+        c.setVisible(false);
         surface.repaint();
 		
 		
@@ -660,7 +671,7 @@ String boardName = "PT_Mini";
         c2.setHeight(iy2);
         c2.setLocation(300, 200);
         System.out.println(c2);
-        c2.setVisible(true);
+        c2.setVisible(false);
         surface.repaint();
 		
 		
@@ -676,7 +687,7 @@ String boardName = "PT_Mini";
 	
 	
 	public static void tbf4(){
-		Cable.putCable();
+		//System.out.println()
 		//Cable.checkProximity();
 	}
 	public static void tbf3(){
@@ -685,4 +696,5 @@ String boardName = "PT_Mini";
 			System.out.println(Pedal.pedalList.get(i).outP);
 		}
 	}
+	
 }

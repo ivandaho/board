@@ -145,18 +145,21 @@ public class Cable extends UndraggableImageThing{
     	Pedal selectedPedal = (Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP);
     	for(int i = 0; i<Pedal.pedalList.size(); i++){
     		 // for eac element in the pedallist....
-    		if (!(((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)) == Pedal.pedalList.get(i))){
+    		//if (!(((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)) == Pedal.pedalList.get(i))){
     			// if its not itself
                 if(((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)).inP.distance(Pedal.pedalList.get(i).outP) < pt &&
-                ((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)).inP.distance(Pedal.pedalList.get(i).outP) > 34){ 
-                	// check distance
+                   ((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)).inP.distance(Pedal.pedalList.get(i).outP) > 34){ 
+                	// check distance (inP to outP)
                 	System.out.println("dragging inP close to " + i + " outP");
 
                     // this is to set IN of the last selected pedal from out 
                 	
                     MainClass2.surface.getComponent(MainClass2.surface.getComponentCount()-3).setLocation(
+                    ((Pedal)(MainClass2.surface.getComponentAt(DraggableThing.clickP))).inP);
+                    /*
                             (new Point((int)selectedPedal.getLocation().getX() + selectedPedal.getWidth(),
                                                (int)selectedPedal.getLocation().getY() + selectedPedal.getHeight()/2 - 79)));
+                                               */
 
                     // this is to set (from the OUT of the pedal closest  not the last selected pedal
                     MainClass2.surface.getComponent(MainClass2.surface.getComponentCount()-4).setLocation(Pedal.pedalList.get(i).outP);
@@ -165,31 +168,52 @@ public class Cable extends UndraggableImageThing{
                 	MainClass2.surface.getComponent(MainClass2.surface.getComponentCount()-3).setVisible(true);
                 }
                 else if(((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)).outP.distance(Pedal.pedalList.get(i).inP) < pt &&
-                ((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)).outP.distance(Pedal.pedalList.get(i).inP) > 34){
-                	// check distance
+                        ((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)).outP.distance(Pedal.pedalList.get(i).inP) > 34){
+                	// check distance (outP to inP)
                 	System.out.println("dragging outP close to " + i + " inP");
 
+                	// set cables
                     // this is to set IN of the last selected pedal from out 
                     MainClass2.surface.getComponent(MainClass2.surface.getComponentCount()-4).setLocation(
-                            (new Point((int)selectedPedal.getLocation().getX() - 34,
+                    ((Pedal)(MainClass2.surface.getComponentAt(DraggableThing.clickP))).outP);
+                    /*
+                    			   ((new Point((int)selectedPedal.getLocation().getX() - 34,
                                                (int)selectedPedal.getLocation().getY() + selectedPedal.getHeight()/2 - 79)));
+                                               */
 
                     // this is to set (from the OUT of the pedal closest  not the last selected pedal
-                    MainClass2.surface.getComponent(MainClass2.surface.getComponentCount()-3).setLocation(Pedal.pedalList.get(i).inP);
+                    MainClass2.surface.getComponent(MainClass2.surface.getComponentCount()-3).setLocation
+                    (Pedal.pedalList.get(i).inP);
+                                    /*
+                                    (int)MainClass2.surface.getComponentAt(selectedPedal.getLocation()).getLocation().getX() + selectedPedal.getWidth(),
+                                    (int)MainClass2.surface.getComponentAt(selectedPedal.getLocation()).getLocation().getY() + selectedPedal.getHeight()/2 - 79
+                                    )
+                                    .setLocation(Pedal.pedalList.get(i).inP);
+                                    */
 
                 	MainClass2.surface.getComponent(MainClass2.surface.getComponentCount()-4).setVisible(true);
                 	MainClass2.surface.getComponent(MainClass2.surface.getComponentCount()-3).setVisible(true);
                 }
-                //else {
-                //	MainClass2.surface.getComponent(MainClass2.surface.getComponentCount()-4).setVisible(false);
-                //	MainClass2.surface.getComponent(MainClass2.surface.getComponentCount()-3).setVisible(false);
-                //}
+                /*
+                else {
+                	MainClass2.surface.getComponent(MainClass2.surface.getComponentCount()-4).setVisible(false);
+                	MainClass2.surface.getComponent(MainClass2.surface.getComponentCount()-3).setVisible(false);
+                }
+                */
     		}
-    	}
+    	//}
     }
     
-    public static void putCable(){
-    	
+    public static void cableTest(){
+    	Pedal selectedPedal = (Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP);
+    	System.out.println(
+    			MainClass2.surface.getComponentAt(
+    			(int)MainClass2.surface.getComponentAt(selectedPedal.getLocation()).getLocation().getX() + selectedPedal.getWidth(),
+    			(int)MainClass2.surface.getComponentAt(selectedPedal.getLocation()).getLocation().getY() + selectedPedal.getHeight()/2 - 79
+    			)
+    			);
+                            //(new Point((int)selectedPedal.getLocation().getX() + selectedPedal.getWidth(),
+                                               //(int)selectedPedal.getLocation().getY() + selectedPedal.getHeight()/2 - 79))));
 
 
     }

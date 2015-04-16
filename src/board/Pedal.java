@@ -41,7 +41,7 @@ public abstract class Pedal extends DraggableImageThing{
 	}
 
 	private String PedalType = "default";
-	public static int pedalID = 0;
+	public int pedalID = 0;
     static ArrayList<Pedal> pedalList = new ArrayList<Pedal>(20);
     static ArrayList<Point> inPoints = new ArrayList<Point> (50);
     static ArrayList<Point> outPoints = new ArrayList<Point> (50);
@@ -340,7 +340,17 @@ public abstract class Pedal extends DraggableImageThing{
 		inPoints.add(p);
 	}
 	public void setInPoint(Point p){
-		inP = p;
+		if (pedalID == 4){
+    		inP = (new Point((int)getLocation().getX() + getWidth(),
+    				   (int)getLocation().getY() + getHeight()/2 - 68));
+		}
+		else if (pedalID == 9){
+    		inP = (new Point((int)getLocation().getX() + getWidth(),
+    				   (int)getLocation().getY() + getHeight()/2 - 98));
+		} else { 
+    		inP = (new Point((int)getLocation().getX() + getWidth(),
+    				   (int)getLocation().getY() + getHeight()/2 - 79));
+		}
 	}
 	public Point getInPoint(){
 		return inP;
@@ -433,7 +443,16 @@ public abstract class Pedal extends DraggableImageThing{
 		outPoints.add(p);
 	}
 	public void setOutPoint(Point p){
-		outP = p;
+		if (pedalID == 4){
+    		outP = (new Point((int)getLocation().getX() - 34,
+    				   (int)getLocation().getY() + getHeight()/2 - 68));
+		} else if (pedalID == 9){
+    		outP = (new Point((int)getLocation().getX() - 34,
+    				   (int)getLocation().getY() + getHeight()/2 - 98));
+		} else {
+    		outP = (new Point((int)getLocation().getX() - 34,
+    				   (int)getLocation().getY() + getHeight()/2 - 79));
+		}
 	}
 	public Point getOutPoint(){
 		return outP;
@@ -468,7 +487,7 @@ public abstract class Pedal extends DraggableImageThing{
 	
 	
 	public void setPedalID(int id) {
-		pedalID = 1;
+		pedalID = id;
 	}
 
 	public int getWidth() {
@@ -480,7 +499,7 @@ public abstract class Pedal extends DraggableImageThing{
 
 
 	public String toString() {
-		return "pedal type is: " + PedalType;
+		return "pedal type is: " + PedalType + " pedalID: " + pedalID;
 	}
 	public int getPedalID() {
 		return pedalID;

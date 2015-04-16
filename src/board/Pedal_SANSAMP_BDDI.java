@@ -3,8 +3,10 @@ package board;
 import java.awt.Point;
 
 public class Pedal_SANSAMP_BDDI extends Pedal{
+ 
 
 	public Pedal_SANSAMP_BDDI(){
+
 		super("SANSAMP_BDDI");
 		setBase("SANSAMP_BDDI");
 		setPedalID(9);

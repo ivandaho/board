@@ -14,6 +14,12 @@ public class Pedal_KORG_Pitchblack extends Pedal{
         setKnobCount(0);
         setFs_0_y(.8);
         
+        setInJack_0_x(.9805);
+        setInJack_0_y(.55);
+        
+        setOutJack_0_x(.025);
+        setOutJack_0_y(.55);
+
         createInPoint(new Point(5, 5));
         createOutPoint(new Point(1, 1));
 
