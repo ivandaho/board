@@ -305,6 +305,10 @@ String boardName = "PT_Mini";
         	spawn = new Pedal_KORG_Pitchblack();
         	Pedal.pedalList.add(spawn);
         }
+        else if (t == 5) {
+        	spawn = new Pedal_EHX_BigMuff();
+        	Pedal.pedalList.add(spawn);
+        }
         else if (t == 9) {
         	spawn = new Pedal_SANSAMP_BDDI();
         	Pedal.pedalList.add(spawn);
@@ -657,7 +661,7 @@ String boardName = "PT_Mini";
         System.out.println(c);
         c.setVisible(false);
         surface.repaint();
-		
+
 		
         Image img_cable2 = Toolkit.getDefaultToolkit().createImage("images/cables/r_1.png");
         Cable c2 = new Cable();
