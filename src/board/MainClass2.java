@@ -74,11 +74,11 @@ String boardName = "PT_Mini";
 		//surface.setBackground(Color.darkGray);
 		surface.setLayout(null);
 		
-		JButton jbnAddP_MXR = new JButton("add MXR");
+		JButton jbnAddP_MXR = new JButton("add ehx bmp");
 		jbnAddP_MXR.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				addNewPedal(1);
+				addNewPedal(5);
 			}
 		});
 
