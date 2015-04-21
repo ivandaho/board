@@ -150,7 +150,7 @@ String boardName = "PT_Mini";
 		
 
 		cm = new CreateMenu("Spawn Custom Pedal");
-		cm.setSize(300, 200);
+		cm.setSize(400, 200);
 		cm.setVisible(false);
 		cm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
