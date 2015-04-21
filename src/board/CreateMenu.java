@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 
 
 import javax.swing.JLabel;
+import javax.swing.JSlider;
 
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -25,6 +26,9 @@ public class CreateMenu extends JFrame{
 
 	public static JLabel labelBase;
 	public static JComboBox optionBase;
+
+	public static JLabel labelRatio;
+	public static JSlider optionRatio;
 
 	public static JLabel labelWidth;
 	public static JTextField optionWidth;
@@ -46,24 +50,45 @@ public class CreateMenu extends JFrame{
 	}
 	
 	
+    static int x;
+    static int typewidth;
+    static int typewidthmin;
+    static int typewidthmax;
 	
 	public static void sdfds() {
 		labelBase = new JLabel();
 		labelBase.setText("base Color/type");
         optionBase = new JComboBox();
+		for(String item:Pedal.basesText) {
+			if (item != null){
+                optionBase.addItem(item);
+			}
+		}
         optionBase.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
 		        System.out.println(optionBase.getSelectedIndex());
 		            System.out.println(((JComboBox) e.getSource()).getSelectedItem());
 
+                    x = optionBase.getSelectedIndex();
+                    typewidth = Pedal.widths[x];
+                    typewidthmin = (int) (((double)typewidth)/2.0);
+                    typewidthmax = typewidth*2;
+
+                    optionRatio.setMinimum(typewidthmin);
+                    optionRatio.setMaximum(typewidthmax);
+
                 }
         });
-		for(String item:Pedal.basesText) {
-			if (item != null){
-                optionBase.addItem(item);
-			}
-		}
+		
+		labelRatio = new JLabel();
+		labelRatio.setText("Ratio!");
+		optionRatio = new JSlider(JSlider.HORIZONTAL,typewidthmin,typewidthmax,typewidth);
+		optionRatio = new JSlider(JSlider.HORIZONTAL,5,20,10);
+		optionRatio.setMinimum(typewidthmin);
+		optionRatio.setMaximum(typewidthmax);
+		
+		
 		
 		labelWidth = new JLabel();
 		labelWidth.setText("Ratio");
@@ -112,7 +137,6 @@ public class CreateMenu extends JFrame{
         optionKnobNumber.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-		        System.out.println(optionKnobNumber.getSelectedItem());
                 }
         });
 
@@ -147,12 +171,17 @@ public class CreateMenu extends JFrame{
         e.insets = new Insets(10,5,5,5);
         e.fill = GridBagConstraints.BOTH;
 
+        /*
         MainClass2.cm.add(labelBase, c);
         MainClass2.cm.add(optionBase, d);
 
-        MainClass2.cm.add(labelWidth, c);
-        MainClass2.cm.add(optionWidth, d);
+        //MainClass2.cm.add(labelWidth, c);
+        //MainClass2.cm.add(optionWidth, d);
+         */
 
+        MainClass2.cm.add(labelRatio, c);
+        MainClass2.cm.add(optionRatio, d);
+/*
         MainClass2.cm.add(labelHeight, c);
         MainClass2.cm.add(optionHeight, d);
 
@@ -164,6 +193,7 @@ public class CreateMenu extends JFrame{
 
         MainClass2.cm.add(testButton, e);
 
+*/
 	
 	}
 }

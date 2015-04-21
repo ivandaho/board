@@ -28,6 +28,20 @@ public abstract class Pedal extends DraggableImageThing{
 	basesText[2] = "SANSAMP_BDDI (width not set)";
 	}
 
+	public static int[] widths = new int[20];
+	public static void popWidths() {
+		widths[0] = 70;
+		widths[1] = 70;
+		widths[2] = 70;
+		widths[3] = 70;
+		widths[4] = 70;
+		widths[5] = 140; // ehx bmp
+		widths[6] = 70;
+		widths[7] = 70;
+		widths[8] = 70;
+		widths[8] = 131; // sansamp bddi
+	}
+
 	public static String[] knobTypes = new String[20];
 	public static void popKnobTypes() {
 		knobTypes[0] = "big mxr new type(old)";
