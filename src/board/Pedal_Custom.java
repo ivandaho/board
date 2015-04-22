@@ -10,19 +10,25 @@ public class Pedal_Custom extends Pedal {
 		setBase((String) Pedal.bases[CreateMenu.optionBase.getSelectedIndex()]);
 		setPedalID(CreateMenu.optionBase.getSelectedIndex());
 
+/*
 		if (CreateMenu.optionWidth.getText().equals("")){
 			setWidth(70);
 		} else {
-            double width = Double.parseDouble(CreateMenu.optionWidth.getText());
-            setWidth(width);
-        }
+		
+*/
+            //double width = Double.parseDouble(CreateMenu.optionWidth.getText());
+            //setWidth(width);
 
+        //}
+/*
 		if (CreateMenu.optionHeight.getText().equals("")){
 			setHeight(111);
 		} else {
             double height = Double.parseDouble(CreateMenu.optionHeight.getText());
             setHeight(height);
 		}
+*/
+
 
 		Integer knobti = CreateMenu.optionKnobType.getSelectedIndex()+1;
 		String knobt =  knobti.toString();

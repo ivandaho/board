@@ -181,6 +181,8 @@ String boardName = "PT_Mini";
                 loadPedals();
                 addIndicator();
                 setBoard();
+                Pedal.popWidths();
+                Pedal.popHeights();
                 Pedal.popBases();
                 Pedal.popBasesText();
                 Pedal.popKnobTypes();

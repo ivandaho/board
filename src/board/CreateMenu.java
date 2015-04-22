@@ -20,6 +20,8 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 
 import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class CreateMenu extends JFrame{
 	
@@ -27,8 +29,8 @@ public class CreateMenu extends JFrame{
 	public static JLabel labelBase;
 	public static JComboBox optionBase;
 
-	public static JLabel labelRatio;
-	public static JSlider optionRatio;
+	public static JLabel labelScale;
+	public static JSlider optionScale;
 
 	public static JLabel labelWidth;
 	public static JTextField optionWidth;
@@ -56,6 +58,20 @@ public class CreateMenu extends JFrame{
     static int typewidthmax;
 	
 	public static void sdfds() {
+		labelScale = new JLabel();
+		labelScale.setText("Scale");
+		//optionScale = new JSlider(JSlider.HORIZONTAL,typewidthmin,typewidthmax,typewidth);
+		optionScale = new JSlider(JSlider.HORIZONTAL, 50, 200, 100);
+		//optionScale.setMinimum(typewidthmin);
+		//optionScale.setMaximum(typewidthmax);
+        optionScale.addChangeListener(new ChangeListener() {
+                @Override
+                public void stateChanged(ChangeEvent e) {
+                }
+        });
+		
+		
+		
 		labelBase = new JLabel();
 		labelBase.setText("base Color/type");
         optionBase = new JComboBox();
@@ -64,34 +80,28 @@ public class CreateMenu extends JFrame{
                 optionBase.addItem(item);
 			}
 		}
+
         optionBase.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
 		        System.out.println(optionBase.getSelectedIndex());
-		            System.out.println(((JComboBox) e.getSource()).getSelectedItem());
+		        /*
 
                     x = optionBase.getSelectedIndex();
                     typewidth = Pedal.widths[x];
                     typewidthmin = (int) (((double)typewidth)/2.0);
                     typewidthmax = typewidth*2;
-
-                    optionRatio.setMinimum(typewidthmin);
-                    optionRatio.setMaximum(typewidthmax);
+                    
+                    System.out.println("" + typewidth + " " + typewidthmin + " " + typewidthmax);
+                    optionScale.setMinimum(typewidthmin);
+                    optionScale.setMaximum(typewidthmax);
+                */
 
                 }
         });
 		
-		labelRatio = new JLabel();
-		labelRatio.setText("Ratio!");
-		optionRatio = new JSlider(JSlider.HORIZONTAL,typewidthmin,typewidthmax,typewidth);
-		optionRatio = new JSlider(JSlider.HORIZONTAL,5,20,10);
-		optionRatio.setMinimum(typewidthmin);
-		optionRatio.setMaximum(typewidthmax);
-		
-		
-		
 		labelWidth = new JLabel();
-		labelWidth.setText("Ratio");
+		labelWidth.setText("Scale");
 		optionWidth = new JTextField();
         optionWidth.addActionListener(new ActionListener() {
                 @Override
@@ -102,7 +112,7 @@ public class CreateMenu extends JFrame{
 		
         
 		labelHeight = new JLabel();
-		labelHeight.setText("Ratio #2");
+		labelHeight.setText("Scale #2");
 		optionHeight = new JTextField();
         optionHeight.addActionListener(new ActionListener() {
                 @Override
@@ -147,9 +157,16 @@ public class CreateMenu extends JFrame{
         
         
         MainClass2.cm.setLayout(new GridBagLayout());
+        GridBagConstraints b = new GridBagConstraints();
         GridBagConstraints c = new GridBagConstraints();
         GridBagConstraints d = new GridBagConstraints();
         GridBagConstraints e = new GridBagConstraints();
+        b.gridx = 1;
+        b.gridwidth = 1;
+        b.fill = GridBagConstraints.HORIZONTAL;
+        b.weightx = 0.5;
+        b.insets = new Insets(3,0,3,0);
+
         c.gridx = 0;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -171,19 +188,17 @@ public class CreateMenu extends JFrame{
         e.insets = new Insets(10,5,5,5);
         e.fill = GridBagConstraints.BOTH;
 
-        /*
         MainClass2.cm.add(labelBase, c);
         MainClass2.cm.add(optionBase, d);
 
         //MainClass2.cm.add(labelWidth, c);
         //MainClass2.cm.add(optionWidth, d);
-         */
 
-        MainClass2.cm.add(labelRatio, c);
-        MainClass2.cm.add(optionRatio, d);
-/*
-        MainClass2.cm.add(labelHeight, c);
-        MainClass2.cm.add(optionHeight, d);
+        MainClass2.cm.add(labelScale, c);
+        MainClass2.cm.add(optionScale, b);
+
+        //MainClass2.cm.add(labelHeight, c);
+        //MainClass2.cm.add(optionHeight, d);
 
         MainClass2.cm.add(labelKnobType, c);
         MainClass2.cm.add(optionKnobType, d);
@@ -192,8 +207,6 @@ public class CreateMenu extends JFrame{
         MainClass2.cm.add(optionKnobNumber, d);
 
         MainClass2.cm.add(testButton, e);
-
-*/
 	
 	}
 }

@@ -19,13 +19,27 @@ public abstract class Pedal extends DraggableImageThing{
 	bases[0] = "MXR_Orange";
 	bases[1] = "BOSS";
 	bases[2] = "SANSAMP_BDDI";
+	bases[3] = "MXR_Orange";
+	bases[4] = "BOSS";
+	bases[5] = "SANSAMP_BDDI";
+	bases[6] = "MXR_Orange";
+	bases[7] = "BOSS";
+	bases[8] = "SANSAMP_BDDI";
+	bases[9] = "SANSAMP_BDDI";
 	}
 
 	public static String[] basesText = new String[20];
 	public static void popBasesText() {
 	basesText[0] = "MXR (defaults to orange atm)";
 	basesText[1] = "BOSS (not working atm)";
-	basesText[2] = "SANSAMP_BDDI (width not set)";
+	basesText[2] = "dont use";
+	basesText[3] = "no idea";
+	basesText[4] = "Korg PitchBlack (semi working)";
+	basesText[5] = "EHX BMP (semi working..?)";
+	basesText[6] = "TC (not working)";
+	basesText[7] = "TC_MINI (not working)";
+	basesText[8] = "TC_BIG (not working)";
+	basesText[9] = "SANSAMP_BDDI (width not set)";
 	}
 
 	public static int[] widths = new int[20];
@@ -34,12 +48,26 @@ public abstract class Pedal extends DraggableImageThing{
 		widths[1] = 70;
 		widths[2] = 70;
 		widths[3] = 70;
-		widths[4] = 70;
+		widths[4] = 68;
 		widths[5] = 140; // ehx bmp
 		widths[6] = 70;
 		widths[7] = 70;
 		widths[8] = 70;
-		widths[8] = 131; // sansamp bddi
+		widths[9] = 131; // sansamp bddi
+	}
+
+	public static int[] heights = new int[20];
+	public static void popHeights() {
+		heights[0] = 111;
+		heights[1] = 126;
+		heights[2] = 126;
+		heights[3] = 70;
+		heights[4] = 120;
+		heights[5] = 174; // ehx bmp
+		heights[6] = 70;
+		heights[7] = 70;
+		heights[8] = 70;
+		heights[9] = 95; // sansamp bddi
 	}
 
 	public static String[] knobTypes = new String[20];
@@ -64,6 +92,17 @@ public abstract class Pedal extends DraggableImageThing{
     private String base = "MXR_orange";
 	private double w = 100; 
     private double h = 100;
+    
+    private double ratio = w/h;
+    
+    public double getRatio(){
+    	return ratio;
+    }
+    public void setRatio(){
+    	System.out.println("w: " + w);
+    	System.out.println("h: " + h);
+    	ratio = (double)w/h;
+    }
     
     // knob stuff
     private String knobType = "1";
