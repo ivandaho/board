@@ -19,6 +19,9 @@ public class Pedal_Custom extends Pedal {
             //double width = Double.parseDouble(CreateMenu.optionWidth.getText());
             //setWidth(width);
 
+            //setHeight((double)(getWidth()/getScale()));
+            setWidth(widths[CreateMenu.optionBase.getSelectedIndex()]*CreateMenu.optionScale.getValue()/100);
+            setHeight(heights[CreateMenu.optionBase.getSelectedIndex()]*CreateMenu.optionScale.getValue()/100);
         //}
 /*
 		if (CreateMenu.optionHeight.getText().equals("")){
