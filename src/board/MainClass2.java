@@ -70,7 +70,7 @@ public class MainClass2 extends JFrame{
 		surface_menu = new Surface();// or new JPanel
 		surface_menu.setBackground(Color.LIGHT_GRAY);
 		//surface_menu.setBorder(new LineBorder(Color.black, 1));
-String boardName = "PT_Mini";
+//String boardName = "PT_Mini";
 		//surface.setBackground(Color.darkGray);
 		surface.setLayout(null);
 		
@@ -192,8 +192,8 @@ String boardName = "PT_Mini";
 
         });
         //////////////////////// pedal code //////////////////////
-		Pedal pedalcreate;
-		pedalcreate = getPedalData();
+		//Pedal pedalcreate;
+		//pedalcreate = getPedalData();
 		//displayStuff(pedalcreate);
         surface.repaint();
 
@@ -449,8 +449,8 @@ String boardName = "PT_Mini";
             }
         }
         ////////////////////////////////////////////////////////////
-    	String fileName = (spawn.pedalID + ".png");
-    	Image img = Toolkit.getDefaultToolkit().createImage("images/"+fileName);
+    	//String fileName = (spawn.pedalID + ".png");
+    	//Image img = Toolkit.getDefaultToolkit().createImage("images/"+fileName);
     	////////////////////////////////////////////////////////////
     	    spawn.setImage(output);
     	    if(oimagedebug == true) {
@@ -485,7 +485,8 @@ String boardName = "PT_Mini";
         System.out.println("######################");
         checkEvents();
         
-        //this doesn't work
+        //this doesn't work!!!
+        /*
     	spawn.setOutPoint
         			(new Point(cx + getRandom(delta / 2) - spawn.getWidth() / 2 - 34, cy + getRandom(delta / 2) - spawn.getHeight() / 2 + spawn.getHeight()/2 - 79));
     		//(new Point((int)spawn.getLocation().getX() - 34,
@@ -495,6 +496,8 @@ String boardName = "PT_Mini";
         			(new Point(cx + getRandom(delta / 2) - spawn.getWidth() / 2 + spawn.getWidth(), cy + getRandom(delta / 2) - spawn.getHeight() / 2 + spawn.getHeight()/2 - 79));
     		//(new Point((int)spawn.getLocation().getX() + spawn.getWidth(),
     				   //(int)spawn.getLocation().getY() + spawn.getHeight()/2 - 79));
+    				    
+        */
         surface.repaint();
     }
     

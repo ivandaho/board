@@ -27,7 +27,7 @@ public class CreateMenu extends JFrame{
 	
 
 	public static JLabel labelBase;
-	public static JComboBox optionBase;
+	public static JComboBox<String> optionBase;
 
 	public static JLabel labelScale;
 	public static JSlider optionScale;
@@ -42,13 +42,13 @@ public class CreateMenu extends JFrame{
 	public static JButton testButton;
 
 	public static JLabel labelKnobType;
-	public static JComboBox optionKnobType;
+	public static JComboBox<String> optionKnobType;
 
 	public static JLabel labelKnobNumber;
-	public static JComboBox optionKnobNumber;
+	public static JComboBox<Integer> optionKnobNumber;
 
 	public static JLabel labelKnobRows;
-	public static JComboBox optionKnobRows;
+	public static JComboBox<Integer> optionKnobRows;
 
 	public CreateMenu(String string) {
 		setTitle(string);
@@ -77,7 +77,7 @@ public class CreateMenu extends JFrame{
 		
 		labelBase = new JLabel();
 		labelBase.setText("base Color/type");
-        optionBase = new JComboBox();
+        optionBase = new JComboBox<String>();
 		for(String item:Pedal.basesText) {
 			if (item != null){
                 optionBase.addItem(item);

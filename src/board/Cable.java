@@ -74,7 +74,7 @@ public class Cable extends UndraggableImageThing{
             int distance = (int) Math.abs(Math.sqrt(distanceX * distanceX + distanceY * distanceY));
             
             //Pedal lt = (Pedal)I/
-            int dX, cX, oX;
+            //int dX, cX, oX;
             
             //for(Point nextP:Pedal.inPoints) {
             //	dX =nextP.getX();
@@ -142,7 +142,7 @@ public class Cable extends UndraggableImageThing{
 
     }
     public static void printProximity(){
-    	Pedal selectedPedal = (Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP);
+    	//Pedal selectedPedal = (Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP);
     	for(int i = 0; i<Pedal.pedalList.size(); i++){
     		 // for eac element in the pedallist....
     		//if (!(((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)) == Pedal.pedalList.get(i))){
