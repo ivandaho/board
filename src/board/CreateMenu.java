@@ -136,7 +136,7 @@ public class CreateMenu extends JFrame{
 
 		labelKnobType = new JLabel();
 		labelKnobType.setText("Knob type");
-        optionKnobType = new JComboBox();
+        optionKnobType = new JComboBox<String>();
 
 		for(String type:Pedal.knobTypes) {
 			if (type != "0" && type != null) {
@@ -147,7 +147,7 @@ public class CreateMenu extends JFrame{
 
 		labelKnobNumber = new JLabel();
 		labelKnobNumber.setText("Knob amount");
-        optionKnobNumber = new JComboBox();
+        optionKnobNumber = new JComboBox<Integer>();
         optionKnobNumber.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -168,7 +168,7 @@ public class CreateMenu extends JFrame{
 
 		labelKnobRows = new JLabel();
 		labelKnobRows.setText("Knob rows");
-        optionKnobRows = new JComboBox();
+        optionKnobRows = new JComboBox<Integer>();
         optionKnobRows.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
