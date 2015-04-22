@@ -150,7 +150,7 @@ String boardName = "PT_Mini";
 		
 
 		cm = new CreateMenu("Spawn Custom Pedal");
-		cm.setSize(400, 200);
+		cm.setSize(400, 300);
 		cm.setVisible(false);
 		cm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
@@ -285,16 +285,6 @@ String boardName = "PT_Mini";
 
         Pedal spawn = null ;
     	//spawn.pedalID = t; // t is type.
-    	if (cm.isVisible()){ //TODO: streamline this. shouldnt be needed.
-    		custom = true;
-    	}
-    	if (custom == true){
-    		System.out.println(custom);
-    	}
-    	else
-    		System.out.println("NOT TRUE. FALSE.");
-    	// drop down menu -> base shape
-
     	if (t == 1) {
             spawn = new Pedal_MXR();
             Pedal.pedalList.add(spawn);

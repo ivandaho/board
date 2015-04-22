@@ -47,6 +47,9 @@ public class CreateMenu extends JFrame{
 	public static JLabel labelKnobNumber;
 	public static JComboBox optionKnobNumber;
 
+	public static JLabel labelKnobRows;
+	public static JComboBox optionKnobRows;
+
 	public CreateMenu(String string) {
 		setTitle(string);
 	}
@@ -85,6 +88,7 @@ public class CreateMenu extends JFrame{
                 @Override
                 public void actionPerformed(ActionEvent e) {
 		        System.out.println(optionBase.getSelectedIndex());
+		        //optionScale.enable();
 		        /*
 
                     x = optionBase.getSelectedIndex();
@@ -147,12 +151,32 @@ public class CreateMenu extends JFrame{
         optionKnobNumber.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    if ((int)optionKnobNumber.getSelectedItem() == 2 && (int)optionKnobRows.getSelectedItem() == 1){
+                            System.out.println("knob number is 2");
+                           // setKnob_0_x(.35);
+                            //setKnob_1_x(.65);
+                    }
+                	if ((int)optionKnobNumber.getSelectedItem()>1){
+                		optionKnobRows.setEnabled(true);
+                	}
                 }
         });
 
 		for(int i = 1; i<=5;i++){
                 optionKnobNumber.addItem(i);
 		}
+
+		labelKnobRows = new JLabel();
+		labelKnobRows.setText("Knob rows");
+        optionKnobRows = new JComboBox();
+        optionKnobRows.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                }
+        });
+
+        optionKnobRows.addItem(1);
+        optionKnobRows.addItem(2);
 
         
         
@@ -196,6 +220,7 @@ public class CreateMenu extends JFrame{
 
         MainClass2.cm.add(labelScale, c);
         MainClass2.cm.add(optionScale, b);
+        //optionScale.setEnabled(false);
 
         //MainClass2.cm.add(labelHeight, c);
         //MainClass2.cm.add(optionHeight, d);
@@ -205,6 +230,10 @@ public class CreateMenu extends JFrame{
 
         MainClass2.cm.add(labelKnobNumber, c);
         MainClass2.cm.add(optionKnobNumber, d);
+
+        MainClass2.cm.add(labelKnobRows, c);
+        MainClass2.cm.add(optionKnobRows, d);
+        optionKnobRows.setEnabled(false);
 
         MainClass2.cm.add(testButton, e);
 	

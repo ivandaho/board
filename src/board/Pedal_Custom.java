@@ -39,6 +39,24 @@ public class Pedal_Custom extends Pedal {
 
 		int KnobCount = (int) CreateMenu.optionKnobNumber.getSelectedItem();
 		setKnobCount(KnobCount);
+		
+		if ((int)CreateMenu.optionKnobNumber.getSelectedItem() == 2 &&
+			(int)CreateMenu.optionKnobRows.getSelectedItem() == 1){
+				
+			// 2 knobs, 1 row
+			setKnob_0_x(.35);
+			setKnob_1_x(.65);
+			setKnob_0_y(.2);
+			setKnob_1_y(.2);
+		}
+
+		if ((int)CreateMenu.optionKnobRows.getSelectedItem() == 2 &&
+		    (int)CreateMenu.optionKnobNumber.getSelectedItem() == 2) {
+			
+			// 2 knobs, 2 row
+			setKnob_0_y(.12);
+			setKnob_1_y(.32);
+		}
 
 
 		
