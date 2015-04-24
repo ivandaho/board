@@ -58,118 +58,7 @@ public class MainClass2 extends JFrame{
     
 	public static void main(String[] args) {
 		
-		///////////////////////////////////////////////////
-		int boardl = 960;
-		int boardw = 720;
-		m = new MainBoard("MainBoard"); //MainBoard();
-		m.setSize(boardl, boardw);
-		m.setVisible(true);
-		m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		surface = new Surface();// or new JPanel
-		surface_menu = new Surface();// or new JPanel
-		surface_menu.setBackground(Color.LIGHT_GRAY);
-		//surface_menu.setBorder(new LineBorder(Color.black, 1));
-//String boardName = "PT_Mini";
-		//surface.setBackground(Color.darkGray);
-		surface.setLayout(null);
-		
-		JButton jbnAddP_MXR = new JButton("add ehx bmp");
-		jbnAddP_MXR.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				addNewPedal(5);
-			}
-		});
-
-		JButton jbnAddP_MXR_BEF = new JButton("add MXR BEF");
-		jbnAddP_MXR_BEF.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				addNewPedal(3);
-			}
-		});
-
-		JButton jbnAddP_KORG_Pitchblack = new JButton("add Korg Pitchblack");
-		jbnAddP_KORG_Pitchblack.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				addNewPedal(4);
-			}
-		});
-		JButton jbnAddP_SANSAMP_BDDI = new JButton("add SansAmp BDDI");
-		jbnAddP_SANSAMP_BDDI.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				addNewPedal(9);
-			}
-		});
-		
-		JButton jbnRemoveP = new JButton("remove last pedal");
-		jbnRemoveP.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent f) {
-				removePedal();
-			}
-		});
-
-		JButton jbnTest = new JButton("test");
-		jbnTest.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent f) {
-				testButtonFunc();
-			}
-
-		});
-
-		JButton jbnTest2 = new JButton("test");
-		jbnTest2.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent f) {
-				testButton2Func();
-			}
-
-		});
-
-		JButton jbnSpawn = new JButton("spawn chooser");
-		jbnSpawn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent f) {
-				spawnBtnFunc();
-			}
-
-		});
-		JButton jbnTest3 = new JButton("tb3");
-		jbnTest3.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent f) {
-				tbf4();
-			}
-
-		});
-		
-
-		cm = new CreateMenu("Spawn Custom Pedal");
-		cm.setSize(400, 300);
-		cm.setVisible(false);
-		cm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		
-		//cm.sdfds();
-		
-		//cm.addWindowListener(
-
-		surface_menu.add(jbnAddP_MXR, BorderLayout.CENTER);
-		surface_menu.add(jbnAddP_MXR_BEF, BorderLayout.CENTER);
-		surface_menu.add(jbnAddP_KORG_Pitchblack, BorderLayout.CENTER);
-		surface_menu.add(jbnAddP_SANSAMP_BDDI, BorderLayout.CENTER);
-		surface_menu.add(jbnRemoveP, BorderLayout.WEST);
-		surface_menu.add(jbnTest, BorderLayout.WEST);
-		surface_menu.add(jbnTest2, BorderLayout.WEST);
-		surface_menu.add(jbnSpawn, BorderLayout.WEST);
-		//surface_menu.add(jbnTest3, BorderLayout.WEST);
-
-		m.add(surface, BorderLayout.CENTER);
-		m.add(surface_menu, BorderLayout.SOUTH);
 
 		/*Is good create a Thread to manipulate Forms and Files. In this particular
          * case an <b>invokeLater</b> is needed becaouse all Forms graphics operations
@@ -178,6 +67,116 @@ public class MainClass2 extends JFrame{
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
+                int boardl = 960;
+        		int boardw = 720;
+        		m = new MainBoard("MainBoard"); //MainBoard();
+        		m.setSize(boardl, boardw);
+        		m.setVisible(true);
+        		m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        		
+        		surface = new Surface();// or new JPanel
+        		surface_menu = new Surface();// or new JPanel
+        		surface_menu.setBackground(Color.LIGHT_GRAY);
+        		//surface_menu.setBorder(new LineBorder(Color.black, 1));
+        		//String boardName = "PT_Mini";
+        		//surface.setBackground(Color.darkGray);
+        		surface.setLayout(null);
+        		
+        		JButton jbnAddP_MXR = new JButton("add ehx bmp");
+        		jbnAddP_MXR.addActionListener(new ActionListener() {
+        			@Override
+        			public void actionPerformed(ActionEvent e) {
+        				addNewPedal(5);
+        			}
+        		});
+
+        		JButton jbnAddP_MXR_BEF = new JButton("add MXR BEF");
+        		jbnAddP_MXR_BEF.addActionListener(new ActionListener() {
+        			@Override
+        			public void actionPerformed(ActionEvent e) {
+        				addNewPedal(3);
+        			}
+        		});
+
+        		JButton jbnAddP_KORG_Pitchblack = new JButton("add Korg Pitchblack");
+        		jbnAddP_KORG_Pitchblack.addActionListener(new ActionListener() {
+        			@Override
+        			public void actionPerformed(ActionEvent e) {
+        				addNewPedal(4);
+        			}
+        		});
+        		JButton jbnAddP_SANSAMP_BDDI = new JButton("add SansAmp BDDI");
+        		jbnAddP_SANSAMP_BDDI.addActionListener(new ActionListener() {
+        			@Override
+        			public void actionPerformed(ActionEvent e) {
+        				addNewPedal(9);
+        			}
+        		});
+        		
+        		JButton jbnRemoveP = new JButton("remove last pedal");
+        		jbnRemoveP.addActionListener(new ActionListener() {
+        			@Override
+        			public void actionPerformed(ActionEvent f) {
+        				removePedal();
+        			}
+        		});
+
+        		JButton jbnTest = new JButton("test");
+        		jbnTest.addActionListener(new ActionListener() {
+        			@Override
+        			public void actionPerformed(ActionEvent f) {
+        				testButtonFunc();
+        			}
+
+        		});
+
+        		JButton jbnTest2 = new JButton("test");
+        		jbnTest2.addActionListener(new ActionListener() {
+        			@Override
+        			public void actionPerformed(ActionEvent f) {
+        				testButton2Func();
+        			}
+
+        		});
+
+        		JButton jbnSpawn = new JButton("spawn chooser");
+        		jbnSpawn.addActionListener(new ActionListener() {
+        			@Override
+        			public void actionPerformed(ActionEvent f) {
+        				spawnBtnFunc();
+        			}
+
+        		});
+        		JButton jbnTest3 = new JButton("tb3");
+        		jbnTest3.addActionListener(new ActionListener() {
+        			@Override
+        			public void actionPerformed(ActionEvent f) {
+        				tbf4();
+        			}
+
+        		});
+        		
+
+        		cm = new CreateMenu("Spawn Custom Pedal");
+        		cm.setSize(400, 300);
+        		cm.setVisible(false);
+        		cm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        		
+        		
+        		//cm.addWindowListener(
+
+        		surface_menu.add(jbnAddP_MXR, BorderLayout.CENTER);
+        		surface_menu.add(jbnAddP_MXR_BEF, BorderLayout.CENTER);
+        		surface_menu.add(jbnAddP_KORG_Pitchblack, BorderLayout.CENTER);
+        		surface_menu.add(jbnAddP_SANSAMP_BDDI, BorderLayout.CENTER);
+        		surface_menu.add(jbnRemoveP, BorderLayout.WEST);
+        		surface_menu.add(jbnTest, BorderLayout.WEST);
+        		surface_menu.add(jbnTest2, BorderLayout.WEST);
+        		surface_menu.add(jbnSpawn, BorderLayout.WEST);
+        		//surface_menu.add(jbnTest3, BorderLayout.WEST);
+
+        		m.add(surface, BorderLayout.CENTER);
+        		m.add(surface_menu, BorderLayout.SOUTH);
                 loadPedals();
                 addIndicator();
                 setBoard();
@@ -187,17 +186,12 @@ public class MainClass2 extends JFrame{
                 Pedal.popBasesText();
                 Pedal.popKnobTypes();
                 CreateMenu.sdfds();
+                surface.repaint();
                 //attachCable();
             }
 
         });
-        //////////////////////// pedal code //////////////////////
-		//Pedal pedalcreate;
-		//pedalcreate = getPedalData();
-		//displayStuff(pedalcreate);
-        surface.repaint();
 
-        ////////////////////// end pedal code ////////////////////
 	}
     //////////////////////// pedal code //////////////////////
 	public static Pedal getPedalData(){
@@ -509,8 +503,9 @@ public class MainClass2 extends JFrame{
         bgBoard.setImage(img_board);//Sets image
         bgBoard.setAutoSize(false);//The component get ratio w/h of source image
 
-        int cx = surface.getWidth() / 2;
-        int cy = surface.getHeight() / 2;
+        int cx = m.getWidth() / 2;
+        int cy = m.getHeight() / 2;
+        System.out.println("cx is: " + cx + ", cy is: " + cy);
         int ix = (bgBoard.getWidth()*imagescale);
         int iy = (bgBoard.getHeight()*imagescale);
 
