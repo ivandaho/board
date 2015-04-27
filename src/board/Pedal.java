@@ -49,7 +49,7 @@ public abstract class Pedal extends DraggableImageThing{
 		widths[2] = 80; //boss
 		widths[3] = 70;
 		widths[4] = 68;
-		widths[5] = 140; // ehx bmp
+		widths[5] = 99; // ehx bmp
 		widths[6] = 70;
 		widths[7] = 70;
 		widths[8] = 70;
@@ -63,7 +63,7 @@ public abstract class Pedal extends DraggableImageThing{
 		heights[2] = 126;
 		heights[3] = 70;
 		heights[4] = 120;
-		heights[5] = 174; // ehx bmp
+		heights[5] = 115; // ehx bmp
 		heights[6] = 70;
 		heights[7] = 70;
 		heights[8] = 70;
@@ -72,11 +72,10 @@ public abstract class Pedal extends DraggableImageThing{
 
 	public static String[] knobTypes = new String[20];
 	public static void popKnobTypes() {
-		knobTypes[0] = "big mxr new type(old)";
+		knobTypes[0] = "phase90 style";
 		knobTypes[1] = "small mxr new type(bef)";
 		knobTypes[2] = "sansamp BDDI";
-		knobTypes[3] = "phase90 style";
-		knobTypes[4] = "big phase90 style";
+		knobTypes[3] = "EHX big muff style";
 		//for (int i = 0; i < 5; i++){
 		//	knobTypes[i] = i;
 		//}

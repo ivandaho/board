@@ -103,7 +103,7 @@ public class Pedal_Custom extends Pedal {
 		if ((int)CreateMenu.optionKnobNumber.getSelectedItem() == 3 &&
 			(int)CreateMenu.optionKnobRows.getSelectedItem() == 1){
 				
-			// 2 knobs, 1 row
+			// 3 knobs, 1 row
 			setKnob_0_x(1/4.0);
 			setKnob_1_x(2/4.0);
 			setKnob_2_x(3/4.0);
@@ -113,7 +113,7 @@ public class Pedal_Custom extends Pedal {
 		if ((int)CreateMenu.optionKnobNumber.getSelectedItem() == 4 &&
 			(int)CreateMenu.optionKnobRows.getSelectedItem() == 1){
 				
-			// 2 knobs, 1 row
+			// 4 knobs, 1 row
 			setKnob_0_x(1/5.0);
 			setKnob_1_x(2/5.0);
 			setKnob_2_x(3/5.0);

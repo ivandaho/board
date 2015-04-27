@@ -16,7 +16,7 @@ public class Pedal_MXR extends Pedal {
 		setWidth(70);
         setHeight(111);
         
-        setKnobType("4");
+        setKnobType("1");
 
         int locX = (int) this.getLocation().getX();
         int locY = (int) this.getLocation().getY();
