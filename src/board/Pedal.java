@@ -22,8 +22,8 @@ public abstract class Pedal extends DraggableImageThing{
 	bases[3] = "MXR_Orange";
 	bases[4] = "Korg_PitchBlack";
 	bases[5] = "EHX_lbmp";
-	bases[6] = "MXR_Orange";
-	bases[7] = "BOSS";
+	bases[6] = "CryBaby";
+	bases[7] = "TC";
 	bases[8] = "SANSAMP_BDDI";
 	bases[9] = "SANSAMP_BDDI";
 	}
@@ -36,8 +36,8 @@ public abstract class Pedal extends DraggableImageThing{
 	basesText[3] = "no idea";
 	basesText[4] = "Korg PitchBlack (semi working)";
 	basesText[5] = "EHX little big muff pi";
-	basesText[6] = "TC (not working)";
-	basesText[7] = "TC_MINI (not working)";
+	basesText[6] = "Dunlop CryBaby (need graphics)";
+	basesText[7] = "TC regulars (not working)";
 	basesText[8] = "TC_BIG (not working)";
 	basesText[9] = "SANSAMP_BDDI (width not set)";
 	}
@@ -50,8 +50,8 @@ public abstract class Pedal extends DraggableImageThing{
 		widths[3] = 70;
 		widths[4] = 68;
 		widths[5] = 99; // ehx bmp
-		widths[6] = 70;
-		widths[7] = 70;
+		widths[6] = 110;// crybaby
+		widths[7] = 72; // tc regular
 		widths[8] = 70;
 		widths[9] = 131; // sansamp bddi
 	}
@@ -64,8 +64,8 @@ public abstract class Pedal extends DraggableImageThing{
 		heights[3] = 70;
 		heights[4] = 120;
 		heights[5] = 115; // ehx bmp
-		heights[6] = 70;
-		heights[7] = 70;
+		heights[6] = 250;
+		heights[7] = 120; // tc regular
 		heights[8] = 70;
 		heights[9] = 95; // sansamp bddi
 	}

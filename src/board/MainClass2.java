@@ -85,19 +85,19 @@ public class MainClass2 extends JFrame{
         		//surface.setBackground(Color.darkGray);
         		surface.setLayout(null);
         		
-        		JButton jbnAddP_MXR = new JButton("add ehx bmp");
+        		JButton jbnAddP_MXR = new JButton("add crybaby");
         		jbnAddP_MXR.addActionListener(new ActionListener() {
         			@Override
         			public void actionPerformed(ActionEvent e) {
-        				addNewPedal(5);
+        				addNewPedal(6);
         			}
         		});
 
-        		JButton jbnAddP_MXR_BEF = new JButton("add MXR BEF");
+        		JButton jbnAddP_MXR_BEF = new JButton("add tc");
         		jbnAddP_MXR_BEF.addActionListener(new ActionListener() {
         			@Override
         			public void actionPerformed(ActionEvent e) {
-        				addNewPedal(3);
+        				addNewPedal(7);
         			}
         		});
 
@@ -300,6 +300,14 @@ public class MainClass2 extends JFrame{
         }
         else if (t == 5) {
         	spawn = new Pedal_EHX_LittleBigMuff();
+        	Pedal.pedalList.add(spawn);
+        }
+        else if (t == 6) {
+        	spawn = new Pedal_CryBaby();
+        	Pedal.pedalList.add(spawn);
+        }
+        else if (t == 7) {
+        	spawn = new Pedal_TC();
         	Pedal.pedalList.add(spawn);
         }
         else if (t == 9) {
