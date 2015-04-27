@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Stack;
 
 import javax.imageio.ImageIO;
 import javax.swing.Box;
@@ -45,6 +46,7 @@ public class MainClass2 extends JFrame{
 	public static JTable surface_table;
 
 	public static JFrame cm;
+	public static NotificationWindow nw;
 
 
     public static Point indyP;
@@ -55,6 +57,7 @@ public class MainClass2 extends JFrame{
     public static Point cableEnd;
     public static Point newP;
 
+    public static Stack printStack;
     
 	public static void main(String[] args) {
 		
@@ -121,16 +124,16 @@ public class MainClass2 extends JFrame{
         			}
         		});
 
-        		JButton jbnTest = new JButton("test");
+        		JButton jbnTest = new JButton("test1");
         		jbnTest.addActionListener(new ActionListener() {
         			@Override
         			public void actionPerformed(ActionEvent f) {
-        				testButtonFunc();
+        				newTestPrintFunc();
         			}
 
         		});
 
-        		JButton jbnTest2 = new JButton("test");
+        		JButton jbnTest2 = new JButton("test2");
         		jbnTest2.addActionListener(new ActionListener() {
         			@Override
         			public void actionPerformed(ActionEvent f) {
@@ -161,6 +164,10 @@ public class MainClass2 extends JFrame{
         		cm.setSize(400, 300);
         		cm.setVisible(false);
         		cm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+
+        		nw = new NotificationWindow("Notification Window");
+        		nw.setVisible(false);
+        		nw.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         		
         		
         		//cm.addWindowListener(
@@ -689,6 +696,14 @@ public class MainClass2 extends JFrame{
 		for(int i = 0; i<Pedal.pedalList.size(); i++){
 			System.out.println(Pedal.pedalList.get(i).inP);
 			System.out.println(Pedal.pedalList.get(i).outP);
+		}
+	}
+	public static void newTestPrintFunc(){
+		//nw.sdf();
+		nw.setVisible(true);
+		for(Pedal item:Pedal.pedalList){
+			System.out.println(item);
+			
 		}
 	}
 	
