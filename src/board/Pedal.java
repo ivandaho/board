@@ -391,13 +391,16 @@ public abstract class Pedal extends DraggableImageThing{
 	public void createInPoint(Point p) {
 		inPoints.add(p);
 	}
-	public void setInPoint(Point p){
+	public void setInPoint(Point p){ // THIS IS WHERE YOU SET THE IN/OUT POINTS OF JACKS FOR THE PEDALS IN ORDER FOR CABLES TO WORK
 		if (pedalID == 2){
     		inP = (new Point((int)getLocation().getX() + getWidth(),
     				   (int)getLocation().getY() + getHeight()/2 - 105));
 		} else if (pedalID == 4){
     		inP = (new Point((int)getLocation().getX() + getWidth(),
     				   (int)getLocation().getY() + getHeight()/2 - 68));
+		} else if (pedalID == 6){
+    		inP = (new Point((int)getLocation().getX() + getWidth() - 13,
+    				   (int)getLocation().getY() + getHeight()/2 - 110));
 		}
 		else if (pedalID == 9){
     		inP = (new Point((int)getLocation().getX() + getWidth(),
@@ -504,6 +507,9 @@ public abstract class Pedal extends DraggableImageThing{
 		} else if (pedalID == 4){
     		outP = (new Point((int)getLocation().getX() - 34,
     				   (int)getLocation().getY() + getHeight()/2 - 68));
+		} else if (pedalID == 6){
+    		outP = (new Point((int)getLocation().getX() -34 + 15,
+    				   (int)getLocation().getY() + getHeight()/2 - 110));
 		} else if (pedalID == 9){
     		outP = (new Point((int)getLocation().getX() - 34,
     				   (int)getLocation().getY() + getHeight()/2 - 98));
