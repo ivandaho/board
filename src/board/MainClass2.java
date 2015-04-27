@@ -292,7 +292,7 @@ public class MainClass2 extends JFrame{
         	Pedal.pedalList.add(spawn);
         }
         else if (t == 5) {
-        	spawn = new Pedal_EHX_BigMuff();
+        	spawn = new Pedal_EHX_LittleBigMuff();
         	Pedal.pedalList.add(spawn);
         }
         else if (t == 9) {
@@ -478,6 +478,7 @@ public class MainClass2 extends JFrame{
         System.out.println(spawn + ", spawned");
         System.out.println("######################");
         checkEvents();
+        Cable.startPoint();
         
         //this doesn't work!!!
         /*

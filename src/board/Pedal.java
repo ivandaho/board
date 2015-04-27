@@ -17,11 +17,11 @@ public abstract class Pedal extends DraggableImageThing{
 	public static String[] bases = new String[20];
 	public static void popBases() {
 	bases[0] = "MXR_Orange";
-	bases[1] = "BOSS";
-	bases[2] = "SANSAMP_BDDI";
+	bases[1] = "nothing";
+	bases[2] = "BOSS";
 	bases[3] = "MXR_Orange";
-	bases[4] = "BOSS";
-	bases[5] = "SANSAMP_BDDI";
+	bases[4] = "Korg_PitchBlack";
+	bases[5] = "EHX_lbmp";
 	bases[6] = "MXR_Orange";
 	bases[7] = "BOSS";
 	bases[8] = "SANSAMP_BDDI";
@@ -31,11 +31,11 @@ public abstract class Pedal extends DraggableImageThing{
 	public static String[] basesText = new String[20];
 	public static void popBasesText() {
 	basesText[0] = "MXR (defaults to orange atm)";
-	basesText[1] = "BOSS (not working atm)";
-	basesText[2] = "dont use";
+	basesText[1] = "nothing (not working atm)";
+	basesText[2] = "BOSS";
 	basesText[3] = "no idea";
 	basesText[4] = "Korg PitchBlack (semi working)";
-	basesText[5] = "EHX BMP (semi working..?)";
+	basesText[5] = "EHX little big muff pi";
 	basesText[6] = "TC (not working)";
 	basesText[7] = "TC_MINI (not working)";
 	basesText[8] = "TC_BIG (not working)";
@@ -45,8 +45,8 @@ public abstract class Pedal extends DraggableImageThing{
 	public static int[] widths = new int[20];
 	public static void popWidths() {
 		widths[0] = 70;
-		widths[1] = 70;
-		widths[2] = 70;
+		widths[1] = 80; //boss...
+		widths[2] = 80; //boss
 		widths[3] = 70;
 		widths[4] = 68;
 		widths[5] = 140; // ehx bmp
@@ -82,7 +82,7 @@ public abstract class Pedal extends DraggableImageThing{
 		//}
 	}
 
-	private String PedalType = "default";
+	private String pedalType = "default";
 	public int pedalID = 0;
     static ArrayList<Pedal> pedalList = new ArrayList<Pedal>(20);
     static ArrayList<Point> inPoints = new ArrayList<Point> (50);
@@ -393,7 +393,10 @@ public abstract class Pedal extends DraggableImageThing{
 		inPoints.add(p);
 	}
 	public void setInPoint(Point p){
-		if (pedalID == 4){
+		if (pedalID == 2){
+    		inP = (new Point((int)getLocation().getX() + getWidth(),
+    				   (int)getLocation().getY() + getHeight()/2 - 105));
+		} else if (pedalID == 4){
     		inP = (new Point((int)getLocation().getX() + getWidth(),
     				   (int)getLocation().getY() + getHeight()/2 - 68));
 		}
@@ -496,7 +499,10 @@ public abstract class Pedal extends DraggableImageThing{
 		outPoints.add(p);
 	}
 	public void setOutPoint(Point p){
-		if (pedalID == 4){
+		if (pedalID == 2){
+    		outP = (new Point((int)getLocation().getX() - 34,
+    				   (int)getLocation().getY() + getHeight()/2 - 106));
+		} else if (pedalID == 4){
     		outP = (new Point((int)getLocation().getX() - 34,
     				   (int)getLocation().getY() + getHeight()/2 - 68));
 		} else if (pedalID == 9){
@@ -512,17 +518,20 @@ public abstract class Pedal extends DraggableImageThing{
 	}
     // constructors and other stuff
     public Pedal(){
-    	this.PedalType = "MXR";
+    	this.pedalType = "MXR";
     	x = (int) MainClass2.surface.getComponent(0).getLocation().getX();
     	y = (int) MainClass2.surface.getComponent(0).getLocation().getY();
     }
 
     public Pedal(String type){
-    	this.PedalType = type;
+    	this.pedalType = type;
 	}
 	
 	public void setBase(String c) {
 		base = c;
+	}
+	public String getBase() {
+		return base;
 	}
 	public String getColor() {
 		return base;
@@ -552,7 +561,7 @@ public abstract class Pedal extends DraggableImageThing{
 
 
 	public String toString() {
-		return "pedal type is: " + PedalType + " pedalID: " + pedalID;
+		return "pedal type is: " + pedalType + " pedalID: " + pedalID;
 	}
 	public int getPedalID() {
 		return pedalID;

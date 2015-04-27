@@ -130,6 +130,17 @@ public class Cable extends UndraggableImageThing{
     public static void updatePointArray(Surface surface, int touchedp){
     	Pedal.inPoints.set(touchedp,(surface.getComponent(touchedp).getLocationOnScreen()));
     }
+    public static void startPoint(){
+    	Pedal selectedPedal = (Pedal)MainClass2.surface.getComponent(0);
+    	((Pedal)MainClass2.surface.getComponent(0)).setOutPoint
+    		(new Point((int)selectedPedal.getLocation().getX() - 34,
+    				   (int)selectedPedal.getLocation().getY() + selectedPedal.getHeight()/2 - 79));
+
+    	((Pedal)MainClass2.surface.getComponent(0)).setInPoint
+    		(new Point((int)selectedPedal.getLocation().getX() + selectedPedal.getWidth(),
+    				   (int)selectedPedal.getLocation().getY() + selectedPedal.getHeight()/2 - 79));
+
+    }
     public static void updatePoint(){
     	Pedal selectedPedal = (Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP);
     	((Pedal)MainClass2.surface.getComponentAt(DraggableThing.clickP)).setOutPoint
