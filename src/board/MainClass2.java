@@ -136,11 +136,13 @@ public class MainClass2 extends JFrame{
 
         		});
 
-        		JButton jbnTest2 = new JButton("test2");
+        		JButton jbnTest2 = new JButton("Order Chain");
         		jbnTest2.addActionListener(new ActionListener() {
         			@Override
         			public void actionPerformed(ActionEvent f) {
-        				testButton2Func();
+        				tbf3();
+        				//printOutput();
+        				//testButton2Func();
         			}
 
         		});
@@ -708,12 +710,27 @@ public class MainClass2 extends JFrame{
 		//Cable.checkProximity();
 	}
 	public static void tbf3(){
-		for(int i = 0; i<Pedal.pedalList.size(); i++){
-			System.out.println(Pedal.pedalList.get(i).inP);
-			System.out.println(Pedal.pedalList.get(i).outP);
+        StringBuilder sb = new StringBuilder();
+		for(int i = Pedal.pedalList.size()-1; i>=0; i--){
+			sb.append(((Pedal)(MainClass2.surface.getComponent(i))).getPedalType());
+            if(i != 0){
+            	sb.append(" -> ");
+            }
 		}
+		NotificationWindow.labelChain.setText(sb.substring(0));
+		nw.setVisible(true);
+		System.out.println(sb.substring(0));
 	}
 	public static void newTestPrintFunc(){
+		//nw.sdf();
+		rw.setVisible(true);
+		for(int i=0;i<Pedal.pedalList.size();i++){
+			System.out.println(surface.getComponent(i));
+		}
+		tbf3();
+	}
+
+	public static void printOutput(){
 		//nw.sdf();
 		rw.setVisible(true);
 		for(int i=0;i<Pedal.pedalList.size();i++){
