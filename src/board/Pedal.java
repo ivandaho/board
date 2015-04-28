@@ -51,7 +51,7 @@ public abstract class Pedal extends DraggableImageThing{
 		widths[4] = 68;
 		widths[5] = 99; // ehx bmp
 		widths[6] = 110;// crybaby
-		widths[7] = 72; // tc regular
+		widths[7] = 74; // tc regular
 		widths[8] = 70;
 		widths[9] = 131; // sansamp bddi
 	}
@@ -381,9 +381,29 @@ public abstract class Pedal extends DraggableImageThing{
 		return inJack_0_y;
 	}
 
+	/**
+	 * Sets the x value of the Pedal's input jack center 
+	 * position.
+	 * 
+	 * The default value is 0.985.
+	 * 
+	 * 
+	 * @param v the multiplier to position the jack relative to the total width
+	 * 			(width * v where v is a number 0-1.0)
+	 */
 	public void setInJack_0_x(double v) {
 		inJack_0_x = v;
 	}
+	/**
+	 * Sets the y value of the Pedal's input jack center 
+	 * position.
+	 * 
+	 * The default value is 0.5.
+	 * 
+	 * 
+	 * @param v the multiplier to position the jack relative to the total height
+	 * 			(height * v where v is a number 0-1.0)
+	 */
 	public void setInJack_0_y(double v) {
 		inJack_0_y = v;
 	}
@@ -392,6 +412,7 @@ public abstract class Pedal extends DraggableImageThing{
 		inPoints.add(p);
 	}
 	public void setInPoint(Point p){ // THIS IS WHERE YOU SET THE IN/OUT POINTS OF JACKS FOR THE PEDALS IN ORDER FOR CABLES TO WORK
+									// reminder: for y axis, more = upwards
 		if (pedalID == 2){
     		inP = (new Point((int)getLocation().getX() + getWidth(),
     				   (int)getLocation().getY() + getHeight()/2 - 105));
@@ -401,6 +422,9 @@ public abstract class Pedal extends DraggableImageThing{
 		} else if (pedalID == 6){
     		inP = (new Point((int)getLocation().getX() + getWidth() - 13,
     				   (int)getLocation().getY() + getHeight()/2 - 110));
+		} else if (pedalID == 7){
+    		inP = (new Point((int)getLocation().getX() + getWidth() - 3,
+    				   (int)getLocation().getY() + getHeight()/2 - 77));
 		}
 		else if (pedalID == 9){
     		inP = (new Point((int)getLocation().getX() + getWidth(),
@@ -483,9 +507,29 @@ public abstract class Pedal extends DraggableImageThing{
 		return outJack_0_y;
 	}
 
+	/**
+	 * Sets the x value of the Pedal's output jack center 
+	 * position.
+	 * 
+	 * The default value is 0.015.
+	 * 
+	 * 
+	 * @param v the multiplier to position the jack relative to the total width
+	 * 			(width * v where v is a number 0-1.0)
+	 */
 	public void setOutJack_0_x(double v) {
 		outJack_0_x = v;
 	}
+	/**
+	 * Sets the y value of the Pedal's output jack center 
+	 * position.
+	 * 
+	 * The default value is 0.5.
+	 * 
+	 * 
+	 * @param v the multiplier to position the jack relative to the total height
+	 * 			(height * v where v is a number 0-1.0)
+	 */
 	public void setOutJack_0_y(double v) {
 		outJack_0_y = v;
 	}
@@ -510,6 +554,9 @@ public abstract class Pedal extends DraggableImageThing{
 		} else if (pedalID == 6){
     		outP = (new Point((int)getLocation().getX() -34 + 15,
     				   (int)getLocation().getY() + getHeight()/2 - 110));
+		} else if (pedalID == 7){
+    		outP = (new Point((int)getLocation().getX() -34 + 6,
+    				   (int)getLocation().getY() + getHeight()/2 - 77));
 		} else if (pedalID == 9){
     		outP = (new Point((int)getLocation().getX() - 34,
     				   (int)getLocation().getY() + getHeight()/2 - 98));
