@@ -32,6 +32,8 @@ import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 
 public class MainClass2 extends JFrame{
+	
+	public static int selectedI = 0;
 
 	public static boolean oimagedebug = false;
 	public static boolean custom = false;
@@ -47,6 +49,7 @@ public class MainClass2 extends JFrame{
 
 	public static JFrame cm;
 	public static NotificationWindow nw;
+	public static RenameWindow rw;
 
 
     public static Point indyP;
@@ -168,6 +171,10 @@ public class MainClass2 extends JFrame{
         		nw = new NotificationWindow("Notification Window");
         		nw.setVisible(false);
         		nw.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+
+        		rw = new RenameWindow("Rename Pedal");
+        		rw.setVisible(false);
+        		rw.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         		
         		
         		//cm.addWindowListener(
@@ -708,10 +715,9 @@ public class MainClass2 extends JFrame{
 	}
 	public static void newTestPrintFunc(){
 		//nw.sdf();
-		nw.setVisible(true);
-		for(Pedal item:Pedal.pedalList){
-			System.out.println(item);
-			
+		rw.setVisible(true);
+		for(int i=0;i<Pedal.pedalList.size();i++){
+			System.out.println(surface.getComponent(i));
 		}
 	}
 	

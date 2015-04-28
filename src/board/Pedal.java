@@ -1,6 +1,8 @@
 package board;
 
 import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public abstract class Pedal extends DraggableImageThing{
@@ -603,6 +605,12 @@ public abstract class Pedal extends DraggableImageThing{
 	public void setPedalID(int id) {
 		pedalID = id;
 	}
+	public String getPedalType() {
+		return pedalType;
+	}
+	public void setPedalType(String pt) {
+		pedalType = pt;
+	}
 
 	public int getWidth() {
 		return (int) w;
@@ -613,7 +621,7 @@ public abstract class Pedal extends DraggableImageThing{
 
 
 	public String toString() {
-		return "pedal type is: " + pedalType + " pedalID: " + pedalID;
+		return "pedal type is: " + pedalType; //+ " pedalID: " + pedalID;
 	}
 	public int getPedalID() {
 		return pedalID;

@@ -25,6 +25,9 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.swing.JComponent;
 
 public class DraggableThing extends JComponent {
@@ -66,10 +69,35 @@ public class DraggableThing extends JComponent {
     private void addDragListeners() {
         /** This handle is a reference to THIS beacause in next Mouse Adapter "this" is not allowed */
         final DraggableThing handle = this;
+        addMouseListener(new MouseAdapter() {
+        boolean isAlreadyOneClick = false;
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (isAlreadyOneClick) {
+                    System.out.println("double click");
+                    if (overbearing) {
+                        getParent().setComponentZOrder(handle, 0);
+                        MainClass2.rw.setVisible(true);
+                        RenameWindow.enterName.setText(((Pedal)(MainClass2.surface.getComponent(0))).getPedalType());
+                        repaint();
+                    }
+                    isAlreadyOneClick = false;
+                } else {
+                    isAlreadyOneClick = true;
+                    Timer t = new Timer("doubleclickTimer", false);
+                    t.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            isAlreadyOneClick = false;
+                        }
+                    }, 500);
+                }
+            }
+        });
         addMouseMotionListener(new MouseAdapter() {
-
             @Override
             public void mouseMoved(MouseEvent e) {
+            	//System.out.println("yes");
                 anchorPoint = e.getPoint();
                 setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
