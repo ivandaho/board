@@ -17,6 +17,7 @@ public class RenameWindow extends JFrame {
 	public static JButton confirmRename = new JButton();
 
 	public RenameWindow(String string) {
+		setResizable(false);
 		setTitle(string);
 		this.setSize(250, this.getInsets().top+this.getInsets().bottom+70);
 		Font f = new Font("Myriad Pro", Font.PLAIN, 14);
@@ -27,6 +28,7 @@ public class RenameWindow extends JFrame {
                 	if(Pedal.pedalList.size()>0){
                         ((Pedal)(MainClass2.surface.getComponent(0))).setPedalType(enterName.getText());
                         System.out.println("pedal renamed to: " + enterName.getText());
+                        MainClass2.rw.setVisible(false);
                 	}
                 }
         });
@@ -38,6 +40,7 @@ public class RenameWindow extends JFrame {
                 	if(Pedal.pedalList.size()>0){
                         ((Pedal)(MainClass2.surface.getComponent(0))).setPedalType(enterName.getText());
                         System.out.println("pedal renamed to: " + enterName.getText());
+                        MainClass2.rw.setVisible(false);
                 	}
                 }
         });

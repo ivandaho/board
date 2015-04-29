@@ -12,6 +12,7 @@ public class NotificationWindow extends JFrame{
 
 	public NotificationWindow(String string) {
 		setTitle(string);
+		setResizable(false);
 		this.setSize(400, this.getInsets().top+this.getInsets().bottom+200);
 		labelChain.setText("this is the text");
 		labelChain.setWrapStyleWord(true);

@@ -76,7 +76,7 @@ public class CreateMenu extends JFrame{
 		
 		
 		labelBase = new JLabel();
-		labelBase.setText("base Color/type");
+		labelBase.setText("Base Color/type");
         optionBase = new JComboBox<String>();
 		for(String item:Pedal.basesText) {
 			if (item != null){
@@ -143,7 +143,7 @@ public class CreateMenu extends JFrame{
                 optionKnobType.addItem(type);
 			}
 		}
-        optionKnobType.setSelectedIndex(3);
+        //optionKnobType.setSelectedIndex(3);
 
 		labelKnobNumber = new JLabel();
 		labelKnobNumber.setText("Knob amount");
@@ -156,13 +156,13 @@ public class CreateMenu extends JFrame{
                            // setKnob_0_x(.35);
                             //setKnob_1_x(.65);
                     }
-                	if ((int)optionKnobNumber.getSelectedItem()>1){
+                	if ((int)optionKnobNumber.getSelectedItem()==2){
                 		optionKnobRows.setEnabled(true);
                 	}
                 }
         });
 
-		for(int i = 1; i<=5;i++){
+		for(int i = 0; i<=5;i++){
                 optionKnobNumber.addItem(i);
 		}
 
@@ -209,8 +209,8 @@ public class CreateMenu extends JFrame{
         e.weighty = 1;
         e.gridwidth = 2;
         e.anchor = GridBagConstraints.PAGE_END;
-        e.insets = new Insets(10,5,5,5);
-        e.fill = GridBagConstraints.BOTH;
+        e.insets = new Insets(5,5,5,5);
+        //e.fill = GridBagConstraints.VERTICAL;
 
         MainClass2.cm.add(labelBase, c);
         MainClass2.cm.add(optionBase, d);

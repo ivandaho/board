@@ -18,9 +18,9 @@ public class Pedal_EHX_LittleBigMuff extends Pedal {
         //setKnob_0_y(.2);
         //setKnob_1_y(.2);
 
-        setInJack_0_x(.99);
+        setInJack_0_x(.96);
         
-        setOutJack_0_x(.005);
+        setOutJack_0_x(.04);
 
         // setInPos();
         // setOutPos();

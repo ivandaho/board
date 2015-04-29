@@ -19,9 +19,9 @@ public abstract class Pedal extends DraggableImageThing{
 	public static String[] bases = new String[20];
 	public static void popBases() {
 	bases[0] = "MXR_Orange";
-	bases[1] = "nothing";
+	bases[1] = "MXR_Purple";
 	bases[2] = "BOSS";
-	bases[3] = "MXR_Orange";
+	bases[3] = "MXR_Purple";
 	bases[4] = "Korg_PitchBlack";
 	bases[5] = "EHX_lbmp";
 	bases[6] = "CryBaby";
@@ -32,22 +32,22 @@ public abstract class Pedal extends DraggableImageThing{
 
 	public static String[] basesText = new String[20];
 	public static void popBasesText() {
-	basesText[0] = "MXR (defaults to orange atm)";
-	basesText[1] = "nothing (not working atm)";
+	basesText[0] = "MXR (orange)";
+	basesText[1] = "MXR (purple)";
 	basesText[2] = "BOSS";
-	basesText[3] = "no idea";
-	basesText[4] = "Korg PitchBlack (semi working)";
+	basesText[3] = "Square Template";
+	basesText[4] = "Korg PitchBlack";
 	basesText[5] = "EHX little big muff pi";
-	basesText[6] = "Dunlop CryBaby (need graphics)";
+	basesText[6] = "Dunlop CryBaby";
 	basesText[7] = "TC regulars (not working)";
-	basesText[8] = "TC_BIG (not working)";
-	basesText[9] = "SANSAMP_BDDI (width not set)";
+	//basesText[8] = "TC_BIG (not working)";
+	//basesText[9] = "SANSAMP_BDDI (width not set)";
 	}
 
 	public static int[] widths = new int[20];
 	public static void popWidths() {
 		widths[0] = 70;
-		widths[1] = 80; //boss...
+		widths[1] = 70; //boss...
 		widths[2] = 80; //boss
 		widths[3] = 70;
 		widths[4] = 68;
@@ -61,7 +61,7 @@ public abstract class Pedal extends DraggableImageThing{
 	public static int[] heights = new int[20];
 	public static void popHeights() {
 		heights[0] = 111;
-		heights[1] = 126;
+		heights[1] = 111;
 		heights[2] = 126;
 		heights[3] = 70;
 		heights[4] = 120;
@@ -74,10 +74,11 @@ public abstract class Pedal extends DraggableImageThing{
 
 	public static String[] knobTypes = new String[20];
 	public static void popKnobTypes() {
-		knobTypes[0] = "phase90 style";
-		knobTypes[1] = "small mxr new type(bef)";
-		knobTypes[2] = "sansamp BDDI";
-		knobTypes[3] = "EHX big muff style";
+		knobTypes[0] = "phase90";
+		knobTypes[1] = "MXR small";
+		knobTypes[2] = "sansamp";
+		knobTypes[3] = "EHX";
+		knobTypes[4] = "TC (Black)";
 		//for (int i = 0; i < 5; i++){
 		//	knobTypes[i] = i;
 		//}

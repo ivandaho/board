@@ -73,8 +73,8 @@ public class MainClass2 extends JFrame{
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                int boardl = 960;
-        		int boardw = 720;
+                int boardl = 1024;
+        		int boardw = 768;
         		m = new MainBoard("MainBoard"); //MainBoard();
         		m.setSize(boardl, boardw);
         		m.setVisible(true);
@@ -88,7 +88,28 @@ public class MainClass2 extends JFrame{
         		//surface.setBackground(Color.darkGray);
         		surface.setLayout(null);
         		
-        		JButton jbnAddP_MXR = new JButton("add crybaby");
+        		JButton jbnAddP_lbmp = new JButton("LBMP");
+        		jbnAddP_lbmp.addActionListener(new ActionListener() {
+        			@Override
+        			public void actionPerformed(ActionEvent e) {
+        				addNewPedal(5);
+        			}
+        		});
+        		JButton jbnAddP_bosspedal = new JButton("BOSS");
+        		jbnAddP_bosspedal.addActionListener(new ActionListener() {
+        			@Override
+        			public void actionPerformed(ActionEvent e) {
+        				addNewPedal(2);
+        			}
+        		});
+        		JButton jbnAddP_befpedal = new JButton("BEF");
+        		jbnAddP_befpedal.addActionListener(new ActionListener() {
+        			@Override
+        			public void actionPerformed(ActionEvent e) {
+        				addNewPedal(3);
+        			}
+        		});
+        		JButton jbnAddP_MXR = new JButton("CBB");
         		jbnAddP_MXR.addActionListener(new ActionListener() {
         			@Override
         			public void actionPerformed(ActionEvent e) {
@@ -96,7 +117,7 @@ public class MainClass2 extends JFrame{
         			}
         		});
 
-        		JButton jbnAddP_MXR_BEF = new JButton("add tc");
+        		JButton jbnAddP_MXR_BEF = new JButton("TC");
         		jbnAddP_MXR_BEF.addActionListener(new ActionListener() {
         			@Override
         			public void actionPerformed(ActionEvent e) {
@@ -104,14 +125,14 @@ public class MainClass2 extends JFrame{
         			}
         		});
 
-        		JButton jbnAddP_KORG_Pitchblack = new JButton("add Korg Pitchblack");
+        		JButton jbnAddP_KORG_Pitchblack = new JButton("KPB");
         		jbnAddP_KORG_Pitchblack.addActionListener(new ActionListener() {
         			@Override
         			public void actionPerformed(ActionEvent e) {
         				addNewPedal(4);
         			}
         		});
-        		JButton jbnAddP_SANSAMP_BDDI = new JButton("add SansAmp BDDI");
+        		JButton jbnAddP_SANSAMP_BDDI = new JButton("BDDI");
         		jbnAddP_SANSAMP_BDDI.addActionListener(new ActionListener() {
         			@Override
         			public void actionPerformed(ActionEvent e) {
@@ -119,7 +140,7 @@ public class MainClass2 extends JFrame{
         			}
         		});
         		
-        		JButton jbnRemoveP = new JButton("remove last pedal");
+        		JButton jbnRemoveP = new JButton("Remove Last Pedal");
         		jbnRemoveP.addActionListener(new ActionListener() {
         			@Override
         			public void actionPerformed(ActionEvent f) {
@@ -147,7 +168,7 @@ public class MainClass2 extends JFrame{
 
         		});
 
-        		JButton jbnSpawn = new JButton("spawn chooser");
+        		JButton jbnSpawn = new JButton("Spawn Menu");
         		jbnSpawn.addActionListener(new ActionListener() {
         			@Override
         			public void actionPerformed(ActionEvent f) {
@@ -166,11 +187,11 @@ public class MainClass2 extends JFrame{
         		
 
         		cm = new CreateMenu("Spawn Custom Pedal");
-        		cm.setSize(400, 300);
+        		cm.setSize(400, 200);
         		cm.setVisible(false);
         		cm.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
-        		nw = new NotificationWindow("Notification Window");
+        		nw = new NotificationWindow("Signal Chain");
         		nw.setVisible(false);
         		nw.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
@@ -181,12 +202,15 @@ public class MainClass2 extends JFrame{
         		
         		//cm.addWindowListener(
 
+        		surface_menu.add(jbnAddP_lbmp, BorderLayout.CENTER);
+        		surface_menu.add(jbnAddP_befpedal, BorderLayout.CENTER);
+        		surface_menu.add(jbnAddP_bosspedal, BorderLayout.CENTER);
         		surface_menu.add(jbnAddP_MXR, BorderLayout.CENTER);
         		surface_menu.add(jbnAddP_MXR_BEF, BorderLayout.CENTER);
         		surface_menu.add(jbnAddP_KORG_Pitchblack, BorderLayout.CENTER);
         		surface_menu.add(jbnAddP_SANSAMP_BDDI, BorderLayout.CENTER);
         		surface_menu.add(jbnRemoveP, BorderLayout.WEST);
-        		surface_menu.add(jbnTest, BorderLayout.WEST);
+        		//surface_menu.add(jbnTest, BorderLayout.WEST);
         		surface_menu.add(jbnTest2, BorderLayout.WEST);
         		surface_menu.add(jbnSpawn, BorderLayout.WEST);
         		//surface_menu.add(jbnTest3, BorderLayout.WEST);
@@ -301,6 +325,10 @@ public class MainClass2 extends JFrame{
         }
         else if (t == 3) {
         	spawn = new Pedal_MXR_BEF();
+        	Pedal.pedalList.add(spawn);
+        }
+        else if (t == 2) {
+        	spawn = new Pedal_BOSS();
         	Pedal.pedalList.add(spawn);
         }
         else if (t == 4) {
@@ -723,7 +751,7 @@ public class MainClass2 extends JFrame{
 	}
 	public static void newTestPrintFunc(){
 		//nw.sdf();
-		rw.setVisible(true);
+		//rw.setVisible(true);
 		for(int i=0;i<Pedal.pedalList.size();i++){
 			System.out.println(surface.getComponent(i));
 		}

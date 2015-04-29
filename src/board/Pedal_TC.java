@@ -15,7 +15,7 @@ public class Pedal_TC extends Pedal {
         setOutJack_0_y(0.51);
        
         setKnobCount(4);
-        setKnobType("6");
+        setKnobType("5");
         
         setKnob_0_x(1/3.0-0.05);
         setKnob_1_x(2/3.0+0.05);

@@ -13,6 +13,9 @@ public class Pedal_Custom extends Pedal {
 			setInJack_0_y(0.4);
 			setOutJack_0_y(0.4);
 		}
+		if(getBase() == "Korg_PitchBlack"){
+			setFs_0_y(.8);
+		}
 		if(getBase() == "SANSAMP_BDDI"){
             setPedalID(9);
             setWidth(131);
