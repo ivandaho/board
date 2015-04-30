@@ -25,10 +25,10 @@ public class Indicator extends UndraggableImageThing{
 	}
 	
 	public void somethingHappened() {
-        setImage(MainClass2.indySH);//Sets image
+        setImage(MainClass.indySH);//Sets image
 	}
 
 	public void nothingToSee() {
-        setImage(MainClass2.indyImg);//Sets image
+        setImage(MainClass.indyImg);//Sets image
 	}
 }

@@ -574,8 +574,8 @@ public abstract class Pedal extends DraggableImageThing{
     // constructors and other stuff
     public Pedal(){
     	this.pedalType = "MXR";
-    	x = (int) MainClass2.surface.getComponent(0).getLocation().getX();
-    	y = (int) MainClass2.surface.getComponent(0).getLocation().getY();
+    	x = (int) MainClass.surface.getComponent(0).getLocation().getX();
+    	y = (int) MainClass.surface.getComponent(0).getLocation().getY();
     }
 
     public Pedal(String type){

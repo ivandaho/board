@@ -130,7 +130,7 @@ public class CreateMenu extends JFrame{
         testButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                	MainClass2.addNewPedal(99);
+                	MainClass.addNewPedal(99);
                 }
         });
 
@@ -180,7 +180,7 @@ public class CreateMenu extends JFrame{
 
         
         
-        MainClass2.cm.setLayout(new GridBagLayout());
+        MainClass.cm.setLayout(new GridBagLayout());
         GridBagConstraints b = new GridBagConstraints();
         GridBagConstraints c = new GridBagConstraints();
         GridBagConstraints d = new GridBagConstraints();
@@ -212,30 +212,30 @@ public class CreateMenu extends JFrame{
         e.insets = new Insets(5,5,5,5);
         //e.fill = GridBagConstraints.VERTICAL;
 
-        MainClass2.cm.add(labelBase, c);
-        MainClass2.cm.add(optionBase, d);
+        MainClass.cm.add(labelBase, c);
+        MainClass.cm.add(optionBase, d);
 
         //MainClass2.cm.add(labelWidth, c);
         //MainClass2.cm.add(optionWidth, d);
 
-        MainClass2.cm.add(labelScale, c);
-        MainClass2.cm.add(optionScale, b);
+        MainClass.cm.add(labelScale, c);
+        MainClass.cm.add(optionScale, b);
         //optionScale.setEnabled(false);
 
         //MainClass2.cm.add(labelHeight, c);
         //MainClass2.cm.add(optionHeight, d);
 
-        MainClass2.cm.add(labelKnobType, c);
-        MainClass2.cm.add(optionKnobType, d);
+        MainClass.cm.add(labelKnobType, c);
+        MainClass.cm.add(optionKnobType, d);
 
-        MainClass2.cm.add(labelKnobNumber, c);
-        MainClass2.cm.add(optionKnobNumber, d);
+        MainClass.cm.add(labelKnobNumber, c);
+        MainClass.cm.add(optionKnobNumber, d);
 
-        MainClass2.cm.add(labelKnobRows, c);
-        MainClass2.cm.add(optionKnobRows, d);
+        MainClass.cm.add(labelKnobRows, c);
+        MainClass.cm.add(optionKnobRows, d);
         optionKnobRows.setEnabled(false);
 
-        MainClass2.cm.add(testButton, e);
+        MainClass.cm.add(testButton, e);
 	
 	}
 }

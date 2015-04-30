@@ -26,9 +26,9 @@ public class RenameWindow extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                 	if(Pedal.pedalList.size()>0){
-                        ((Pedal)(MainClass2.surface.getComponent(0))).setPedalType(enterName.getText());
+                        ((Pedal)(MainClass.surface.getComponent(0))).setPedalType(enterName.getText());
                         System.out.println("pedal renamed to: " + enterName.getText());
-                        MainClass2.rw.setVisible(false);
+                        MainClass.rw.setVisible(false);
                 	}
                 }
         });
@@ -38,9 +38,9 @@ public class RenameWindow extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                 	if(Pedal.pedalList.size()>0){
-                        ((Pedal)(MainClass2.surface.getComponent(0))).setPedalType(enterName.getText());
+                        ((Pedal)(MainClass.surface.getComponent(0))).setPedalType(enterName.getText());
                         System.out.println("pedal renamed to: " + enterName.getText());
-                        MainClass2.rw.setVisible(false);
+                        MainClass.rw.setVisible(false);
                 	}
                 }
         });

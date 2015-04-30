@@ -77,8 +77,8 @@ public class DraggableThing extends JComponent {
                     System.out.println("double click");
                     if (overbearing) {
                         getParent().setComponentZOrder(handle, 0);
-                        MainClass2.rw.setVisible(true);
-                        RenameWindow.enterName.setText(((Pedal)(MainClass2.surface.getComponent(0))).getPedalType());
+                        MainClass.rw.setVisible(true);
+                        RenameWindow.enterName.setText(((Pedal)(MainClass.surface.getComponent(0))).getPedalType());
                         repaint();
                     }
                     isAlreadyOneClick = false;
@@ -113,9 +113,9 @@ public class DraggableThing extends JComponent {
                 setLocation(position);
                 clickP = position;
 
-                if(MainClass2.surface.getComponentCount() > 5) {
+                if(MainClass.surface.getComponentCount() > 5) {
                     Cable.updatePoint();
-                    Cable.printProximity();
+                    Cable.checkProximity();
                 }
                 //Change Z-Buffer if it is "overbearing"
                 if (overbearing) {
