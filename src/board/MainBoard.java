@@ -9,7 +9,10 @@ public class MainBoard extends JFrame{
 
 	public MainBoard(String string) {
 		setTitle(string);
-		// TODO Auto-generated constructor stub
+	}
+	
+	public void test() {
+		
 	}
 /*
 	public void paint(Graphics g){

@@ -25,10 +25,14 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.swing.JComponent;
 
 public class DraggableThing extends JComponent {
 
+	static Point clickP;
     /** If sets <b>TRUE</b> this component is draggable */
     private boolean draggable = true;
     /** 2D Point representing the coordinate where mouse is, relative parent container */
@@ -65,10 +69,35 @@ public class DraggableThing extends JComponent {
     private void addDragListeners() {
         /** This handle is a reference to THIS beacause in next Mouse Adapter "this" is not allowed */
         final DraggableThing handle = this;
+        addMouseListener(new MouseAdapter() {
+        boolean isAlreadyOneClick = false;
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (isAlreadyOneClick) {
+                    System.out.println("double click");
+                    if (overbearing) {
+                        getParent().setComponentZOrder(handle, 0);
+                        MainClass.rw.setVisible(true);
+                        RenameWindow.enterName.setText(((Pedal)(MainClass.surface.getComponent(0))).getPedalType());
+                        repaint();
+                    }
+                    isAlreadyOneClick = false;
+                } else {
+                    isAlreadyOneClick = true;
+                    Timer t = new Timer("doubleclickTimer", false);
+                    t.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            isAlreadyOneClick = false;
+                        }
+                    }, 500);
+                }
+            }
+        });
         addMouseMotionListener(new MouseAdapter() {
-
             @Override
             public void mouseMoved(MouseEvent e) {
+            	//System.out.println("yes");
                 anchorPoint = e.getPoint();
                 setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
@@ -82,7 +111,12 @@ public class DraggableThing extends JComponent {
                 Point mouseOnScreen = e.getLocationOnScreen();
                 Point position = new Point(mouseOnScreen.x - parentOnScreen.x - anchorX, mouseOnScreen.y - parentOnScreen.y - anchorY);
                 setLocation(position);
+                clickP = position;
 
+                if(MainClass.surface.getComponentCount() > 5) {
+                    Cable.updatePoint();
+                    Cable.checkProximity();
+                }
                 //Change Z-Buffer if it is "overbearing"
                 if (overbearing) {
                     getParent().setComponentZOrder(handle, 0);
