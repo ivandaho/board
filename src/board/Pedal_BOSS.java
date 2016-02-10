@@ -12,6 +12,8 @@ public class Pedal_BOSS extends Pedal {
         setHeight(126);
         setInJack_0_y(0.4);
         setOutJack_0_y(0.4);
+        setOutJack_0_x(0.044);
+        setInJack_0_x(0.956);
 	}
 	
 	public void callAll(){
